@@ -1,0 +1,75 @@
+@keyframes borderSacle{
+     0%{
+        box-shadow: 0 0 0px rgba(223,54,54,.8);
+     }
+     100%{
+        box-shadow: 0 0 5px rgba(223,54,54,.8);
+     }
+}
+.form-item-group {
+    .el-row{
+        display: flex;
+        flex-wrap: wrap;
+        align-items: stretch;
+    }
+    .input-group {
+        display: flex;
+        margin-bottom: 15px;
+        &.emptyValueAnimate{
+            input.el-input__inner{
+                border-color: #df3636 !important;
+                animation: borderSacle .3s linear alternate 6;
+            }
+        }
+        &>label {
+            flex: 0 0 120px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            overflow: hidden;
+            line-height: 30px;
+            &.require:before{
+                content:'*';
+                color:#e22626;
+                font-size: 14px;
+                vertical-align: middle;
+               /*  line-height: 32px; */
+                padding: 0 5px;
+                box-sizing: border-box;
+            }
+        }
+
+        &.text-left {
+            &>label {
+                text-align: left;
+            }
+        }
+
+        &.text-right {
+            &>label {
+                text-align: right;
+            }
+        }
+        &.text-center{
+            &>label{
+                text-align: center;
+            }
+        }
+
+        &>.input-bar {
+            flex: 1;
+        }
+    }
+
+     .handle-btn {
+        text-align: right;
+    }
+
+    .el-input,
+    .el-select,
+    .el-date-editor {
+        width: 100%; 
+        box-sizing: border-box;
+    }
+
+  
+}
