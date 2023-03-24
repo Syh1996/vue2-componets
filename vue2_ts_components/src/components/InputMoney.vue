@@ -18,7 +18,7 @@ import { Component, Model, Prop, Watch } from "vue-property-decorator";
     "el-input": Input,
   },
 })
-export default class InputMoney extends Vue {
+export default class MoneyInput extends Vue {
   @Model("blurData") val!: string | number | null;
   text: string = "";
 

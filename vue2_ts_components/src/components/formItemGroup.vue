@@ -615,7 +615,7 @@ interface IShortCutsType {
   shortcuts: IShortCutsTypeChild[];
 }
 @Component({
-  name: "FormItemGroup",
+  name: "FormGroup",
   components: {
     "el-row": Row,
     "el-col": Col,

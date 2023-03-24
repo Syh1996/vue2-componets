@@ -95,7 +95,7 @@ import {
 ##### 使用
 
 ```html
-<table-title title="查询条件" themeColor="orange"></table-title>
+<TableTitle title="查询条件" themeColor="orange"></TableTitle>
 ```
 
 | 参数       | 说明       | 默认值  |
@@ -114,8 +114,8 @@ import {
 ##### 使用
 
 ```html
- <Pagination :config="config" @getPaginationData="getPaginationData">
- </Pagination>
+ <PaginationComponent :config="config" @getPaginationData="getPaginationData">
+ </PaginationComponent>
 ```
 
 | 参数               | 说明                         | 默认值                                                     |
@@ -180,13 +180,14 @@ new Vue({
 </script>
 ```
 
-| 参数         | 说明                                        | 默认值              |
-| ------------ | ------------------------------------------- | ------------------- |
-| title        | 上传按钮展示的文字                          | string              |
-| disabled     | 上传按钮是否禁用                            | boolean型           |
-| fn           | 导入调用的接口请求                          | Function型          |
-| config.total | 数据总数                                    | Number型，默认值：0 |
-| callBack     | 回调函数，文件上传完成 后返回接口返回的数据 | Function型          |
+| 参数          | 说明                                        | 默认值                        |
+| ------------- | ------------------------------------------- | ----------------------------- |
+| title         | 上传按钮展示的文字                          | string                        |
+| disabled      | 上传按钮是否禁用                            | boolean型                     |
+| fn            | 导入调用的接口请求                          | Function型                    |
+| uploadFileExt | 导入文件允许的后缀                          | string[]，默认["xlsx", "xls"] |
+| config.total  | 数据总数                                    | Number型，默认值：0           |
+| callBack      | 回调函数，文件上传完成 后返回接口返回的数据 | Function型                    |
 
 ##### 预览
 
@@ -219,7 +220,7 @@ new Vue({
 当组件配置与element-ui table上的属性共同存在时，组件配置项优先于table上的属性
 
 ```html
-<CustormTable
+<TableComponent
       :tableConfig="tableConfig"
       :tableData="tableData"
       :tableColumnConfig="tableColumnConfig"
@@ -246,7 +247,7 @@ new Vue({
             <el-button type="danger" @click="edit(data)">编辑</el-button>
         </template>
         
-  </CustormTable>
+  </TableComponent>
 ```
 
 
@@ -306,7 +307,7 @@ new Vue({
 ##### 使用
 
 ```html
-<FormItemGroup
+<FormGroup
       :formConfig="formConfig"
       ref="formItemGroup"
       @getFormData="getFormData"
@@ -329,7 +330,7 @@ new Vue({
           >
         </div>
       </template>
-    </FormItemGroup>
+    </FormGroup>
 ```
 
 

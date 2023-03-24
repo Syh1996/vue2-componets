@@ -38,7 +38,6 @@
         />
         <el-table-column
           :label="item.title"
-          v-for="(item, index) in getTableColumnConfig"
           :key="index"
           :width="item.width || 'auto'"
           :fixed="item.fixed || false"
@@ -87,7 +86,7 @@ import { Table, TableColumn } from "element-ui";
 import Pagination from "@Components/pagination.vue";
 import { ITableConfig, ITableColumnConfig } from "@/ts/comm";
 @Component({
-  name: 'CustormTable',
+  name: 'TableComponent',
   components: {
     "el-table": Table,
     "el-table-column": TableColumn,
@@ -103,7 +102,7 @@ export default class TableComponent extends Vue {
   @Prop({ default: ()=>{}}) tableAttributes!: any;
   @Prop({ default: ()=>{} }) tableEvents!: any;
 
-  // 获取当前表格配置信息
+/*   // 获取当前表格配置信息
   public get getTableColumnConfig() {
     const isShowEditBtn: boolean = (this as any).$store.getters.getEditBtnShow;
     if (isShowEditBtn) {
@@ -116,7 +115,7 @@ export default class TableComponent extends Vue {
       );
       return arr;
     }
-  }
+  } */
   // 表格配置项
   tableGlobalConfig: ITableConfig = {};
   // 选择的行

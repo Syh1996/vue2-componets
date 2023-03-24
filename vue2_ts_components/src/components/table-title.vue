@@ -11,7 +11,7 @@
 import { Component, Prop } from "vue-property-decorator";
 import Vue from "vue";
 @Component({
-  name: 'dividerTitle'
+  name: 'TableTitle'
 })
 export default class TableTitle extends Vue {
   @Prop({ default: "" }) title!: string;

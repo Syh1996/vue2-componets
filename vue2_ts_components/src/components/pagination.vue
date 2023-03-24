@@ -31,13 +31,13 @@ const defaultConfig = {
   layout: "total, prev, pager, next,sizes, jumper",
 };
 @Component({
-  name: 'Pagination',
+  name: 'PaginationComponent',
   components: {
     "el-pagination": Pagination,
   },
 })
 /** 分页组件  */
-export default class Paganation extends Vue {
+export default class PaginationComponent extends Vue {
   @Prop({ default: () => {} }) config?: any;
   @Watch("config", { deep: true, immediate: true }) configChange(newVal: any) {
     this.custormConfig = { ...this.custormConfig, ...(this.config || {}) };
