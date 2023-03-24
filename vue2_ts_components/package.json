@@ -1,6 +1,6 @@
 {
   "name": "vue2_ts_components",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "private": false,
   "main": "./dist/app.umd.min.js",
   "description": "基于vue2 ts版封装工作中快速生成页面组件",

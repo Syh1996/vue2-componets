@@ -74,6 +74,7 @@ export default class UploadGroup extends Vue {
   @Prop({ default: () => {} }) fn?: any; // 导入调用的接口
   @Prop({}) title?: string;
   @Prop({}) disabled?: boolean;
+  @Prop({ default: ()=>["xlsx", "xls"] }) uploadFileExt!: string[];
 
   // 加载中
   isLoading: boolean = false;
@@ -100,7 +101,7 @@ export default class UploadGroup extends Vue {
   /** 文件变化 */
   public async fileChange(e: any) {
     if (e) {
-      const exts = ["xlsx", "xls"];
+      const exts = this.uploadFileExt;
       const name: string = e.target.files[0].name;
       this.fileName = name;
       const ext: string = name.substring(name.lastIndexOf(".") + 1);

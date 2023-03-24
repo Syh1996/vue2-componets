@@ -7,6 +7,8 @@
       <el-table
         ref="tableComponentRef"
         :data="tableData"
+        v-bind="tableAttributes"
+        v-on="tableEvents"
         :border="tableGlobalConfig.border === true"
         :stripe="tableGlobalConfig.stripe === true"
         :row-class-name="tableGlobalConfig.rowClassName"
@@ -17,6 +19,7 @@
         @selection-change="handleSelectionChange"
         :row-key="getCurRowKey"
         size="small"
+        v-loading="loading"
       >
         <el-table-column
           type="selection"
@@ -96,6 +99,9 @@ export default class TableComponent extends Vue {
   @Prop({ default: () => {} }) tableColumnConfig: any;
   @Prop({ default: () => {} }) tableConfig?: ITableConfig;
   @Prop({ default: () => {} }) paginationData?: any;
+  @Prop({ default: false }) loading!: boolean;
+  @Prop({ default: ()=>{}}) tableAttributes!: any;
+  @Prop({ default: ()=>{} }) tableEvents!: any;
 
   // 获取当前表格配置信息
   public get getTableColumnConfig() {
