@@ -1,8 +1,8 @@
 {
   "name": "vue2_ts_components",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
-  "main": "./dist",
+  "main": "./dist/app.umd.min.js",
   "description": "基于vue2 ts版封装工作中快速生成页面组件",
   "scripts": {
     "serve": "vue-cli-service serve",
