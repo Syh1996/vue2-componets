@@ -32,14 +32,15 @@
             }"
           >
             <el-input
+              v-bind="item.elementAttributes || {}"
               :id="'input' + index"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
               :placeholder="
                 item.placeholder ||
                 (item.type === 'input'
-                  ? ($t('placeInputInfo')+ item.label)
-                  : ($t('placeSelect') +item.label))
+                  ? $t('placeInputInfo') + item.label
+                  : $t('placeSelect') + item.label)
               "
               :clearable="item.clearable || true"
               @change="
@@ -84,18 +85,19 @@
             }"
           >
             <el-select
+              v-bind="item.elementAttributes || {}"
               :id="'input' + index"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
               :placeholder="
                 item.placeholder || item.type === 'input'
-                  ? ($t('placeInputInfo')+ item.label)
-                  : ($t('placeSelect')+item.label)
+                  ? $t('placeInputInfo') + item.label
+                  : $t('placeSelect') + item.label
               "
               filterable
               :multiple="item.multiple"
-              :collapse-tags="item.collapseTags "
-              :collapse-tags-tooltip="item.collapseTagsTooltip "
+              :collapse-tags="item.collapseTags"
+              :collapse-tags-tooltip="item.collapseTagsTooltip"
               :clearable="item.clearable || true"
               :remote-method="
                 (text) =>
@@ -156,19 +158,20 @@
             }"
           >
             <el-select
+              v-bind="item.elementAttributes || {}"
               :id="'input' + index"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
               :placeholder="
                 item.placeholder || item.type === 'input'
-                  ? ($t('placeInputInfo')+ item.label)
-                  : ($t('placeSelect')+item.label)
+                  ? $t('placeInputInfo') + item.label
+                  : $t('placeSelect') + item.label
               "
               filterable
               :clearable="item.clearable || true"
               :multiple="item.multiple"
-              :collapse-tags="item.collapseTags "
-              :collapse-tags-tooltip="item.collapseTags "
+              :collapse-tags="item.collapseTags"
+              :collapse-tags-tooltip="item.collapseTags"
               @change="
                 (e) =>
                   itemEvent(item, 'onChange', { formData, formList, index, e })
@@ -218,20 +221,30 @@
             }"
           >
             <el-select
+              v-bind="item.elementAttributes || {}"
               :id="'input' + index"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
-              :placeholder="item.placeholder || ($t('placeInputInfo')+ item.label)"
+              :placeholder="
+                item.placeholder || $t('placeInputInfo') + item.label
+              "
               filterable
               remote
               :clearable="item.clearable || true"
               :multiple="item.multiple"
-              :collapse-tags="item.collapseTags "
-              
+              :collapse-tags="item.collapseTags"
               :remote-method="(query) => item.remoteMethod(query, item)"
               :loading="item.loading"
               @change="
-                (e) =>{recordSelectedOptions(item),itemEvent(item, 'onChange', { formData, formList, index, e })}
+                (e) => {
+                  recordSelectedOptions(item),
+                    itemEvent(item, 'onChange', {
+                      formData,
+                      formList,
+                      index,
+                      e,
+                    });
+                }
               "
               @blur="
                 (e) =>
@@ -243,7 +256,7 @@
               "
             >
               <el-option
-                v-for="(opt) in item.options"
+                v-for="opt in item.options"
                 :key="opt.value"
                 :label="opt.label"
                 :value="opt.value"
@@ -278,6 +291,7 @@
             }"
           >
             <el-radio-group
+              v-bind="item.elementAttributes || {}"
               :id="'input' + index"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
@@ -322,6 +336,7 @@
             }"
           >
             <el-checkbox-group
+              v-bind="item.elementAttributes || {}"
               :id="'input' + index"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
@@ -368,6 +383,7 @@
             }"
           >
             <el-date-picker
+              v-bind="item.elementAttributes || {}"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
               type="date"
@@ -409,6 +425,7 @@
             }"
           >
             <el-date-picker
+              v-bind="item.elementAttributes || {}"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
               type="month"
@@ -454,6 +471,7 @@
             }"
           >
             <el-date-picker
+              v-bind="item.elementAttributes || {}"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
               type="daterange"
@@ -501,6 +519,7 @@
             }"
           >
             <el-date-picker
+              v-bind="item.elementAttributes || {}"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
               type="datetime"
@@ -545,6 +564,7 @@
             }"
           >
             <el-date-picker
+              v-bind="item.elementAttributes || {}"
               :size="item.size || 'small'"
               v-model="formData[item.key]"
               type="datetimerange"
@@ -586,7 +606,7 @@ import {
   Checkbox,
   CheckboxGroup,
 } from "element-ui";
-import { IFormSearch } from '@/ts/comm'
+import { IFormSearch } from "@/ts/comm";
 interface IShortCutsTypeChild {
   text: string;
   onClick: (picker: any) => void;
@@ -595,7 +615,7 @@ interface IShortCutsType {
   shortcuts: IShortCutsTypeChild[];
 }
 @Component({
-  name: 'FormItemGroup',
+  name: "FormItemGroup",
   components: {
     "el-row": Row,
     "el-col": Col,
@@ -770,12 +790,12 @@ export default class FormGroup extends Vue {
   // 必填项
   requireKey: any = {};
   // 记录多选时已经选中的列表
-  recordSelectedList:any =  {}
+  recordSelectedList: any = {};
 
   /** created */
   public created() {
     console.log(this);
-    const language: string = 'zh';
+    const language: string = "zh";
     this.language = language;
     this.formList = this.formConfig.map((item: any) => {
       item.span =
@@ -793,7 +813,7 @@ export default class FormGroup extends Vue {
         item.remoteMethod =
           item.remoteMethod ||
           (async (query: string, itemConfig: any) => {
-            if(!query){
+            if (!query) {
               return;
             }
             const arr = [...this.formList];
@@ -801,13 +821,20 @@ export default class FormGroup extends Vue {
               const currentEachConfig = arr[i];
               if (currentEachConfig.key === itemConfig.key) {
                 currentEachConfig.loading = true;
-                const result: any = await item.loadApi({
-                  msg: query,
-                }) || [];
-                const recordSelectedList = this.recordSelectedList[itemConfig.key] || [];
-                const recordSelectedListValues = Array.from(recordSelectedList,(cur: any)=>cur.value);
-                const deleteFullArray = result.filter((cur: any)=>!recordSelectedListValues.includes(cur.value))
-                const allArray = [...deleteFullArray,...recordSelectedList];
+                const result: any =
+                  (await item.loadApi({
+                    msg: query,
+                  })) || [];
+                const recordSelectedList =
+                  this.recordSelectedList[itemConfig.key] || [];
+                const recordSelectedListValues = Array.from(
+                  recordSelectedList,
+                  (cur: any) => cur.value
+                );
+                const deleteFullArray = result.filter(
+                  (cur: any) => !recordSelectedListValues.includes(cur.value)
+                );
+                const allArray = [...deleteFullArray, ...recordSelectedList];
                 // const allArray = [...recordSelectedList,...deleteFullArray];
                 currentEachConfig.options = allArray;
                 currentEachConfig.loading = false;
@@ -847,18 +874,29 @@ export default class FormGroup extends Vue {
   public defaultFunction() {
     return "no event";
   }
-  /** 
+  /**
    * 记录选中的options
    */
-  public recordSelectedOptions(item: any){
-    const arr = item.options.filter((cur: any)=>this.formData[item.key].includes(cur.value));
-    const originItemKeyArray = this.recordSelectedList[item.key] ? this.recordSelectedList[item.key]: [];
-    const deleteFullArrayString = [...new Set(Array.from([...originItemKeyArray,...arr],cur=>JSON.stringify(cur)))];
-    const deleteFullArray = Array.from(deleteFullArrayString,cur=>JSON.parse(cur));
+  public recordSelectedOptions(item: any) {
+    const arr = item.options.filter((cur: any) =>
+      this.formData[item.key].includes(cur.value)
+    );
+    const originItemKeyArray = this.recordSelectedList[item.key]
+      ? this.recordSelectedList[item.key]
+      : [];
+    const deleteFullArrayString = [
+      ...new Set(
+        Array.from([...originItemKeyArray, ...arr], (cur) =>
+          JSON.stringify(cur)
+        )
+      ),
+    ];
+    const deleteFullArray = Array.from(deleteFullArrayString, (cur) =>
+      JSON.parse(cur)
+    );
     this.recordSelectedList = {
-      [item.key]: deleteFullArray
-    }
-   
+      [item.key]: deleteFullArray,
+    };
   }
   /** 调配置项item event */
   public itemEvent(
@@ -938,13 +976,13 @@ export default class FormGroup extends Vue {
   public getFormData() {
     let data: any = { ...this.formData };
     const obj: any = {};
-    for(let i in data){
-        const cur = data[i];
-        if(Array.isArray(cur)){
-            obj[i] = cur.join(',')
-        }else{
-          obj[i] = cur;
-        }
+    for (let i in data) {
+      const cur = data[i];
+      if (Array.isArray(cur)) {
+        obj[i] = cur.join(",");
+      } else {
+        obj[i] = cur;
+      }
     }
     // 处理数据
     return obj;

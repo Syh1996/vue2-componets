@@ -114,8 +114,8 @@ import {
 ##### 使用
 
 ```html
- <pagination :config="config" @getPaginationData="getPaginationData">
- </pagination>
+ <Pagination :config="config" @getPaginationData="getPaginationData">
+ </Pagination>
 ```
 
 | 参数               | 说明                         | 默认值                                                     |
@@ -130,6 +130,8 @@ import {
 | config.layout      | 组件布局，子组件名用逗号分隔 | String型，默认值："total, prev, pager, next,sizes, jumper" |
 | config.align       | 分页组件对齐方式             | String型，默认值“right"，支持"left/center/right"           |
 | @getPaginationData | 分页数量、当前页变化时触发   | ({currentPage,pageSize})=>{}                               |
+
+
 
 ##### 预览
 
@@ -196,6 +198,8 @@ new Vue({
 
 #### 金额输入框
 
+##### 使用
+
 与普通输入框相同，在此增加千分位展示
 
 ``````html
@@ -204,4 +208,297 @@ new Vue({
 
 
 
+
+
+#### 表格(已集成分页)
+
+##### 使用
+
+**支持element-ui Table上所有属性和方法**
+
+当组件配置与element-ui table上的属性共同存在时，组件配置项优先于table上的属性
+
+```html
+<CustormTable
+      :tableConfig="tableConfig"
+      :tableData="tableData"
+      :tableColumnConfig="tableColumnConfig"
+      @getSelectRow="getSelectRow"
+      :tableAttributes="{}"
+      :tableEvents="{}"
+    >
+        <!-- 表格头部操作栏  slotName不可变 -->
+        <template #batchHandle="{data}">
+            <el-button type="danger" @click="deleteItem(data)">批量删除</el-button>
+            <el-button type="danger" @click="deleteItem(data)">新增</el-button>
+            <el-button type="danger" @click="deleteItem(data)">编辑</el-button>
+            <el-button type="danger" @click="deleteItem(data)">其它</el-button>
+        </template>
+        
+        <!-- 自定义时间  -->
+         <template #date="{data}">
+           <p @click="showData(data)">{{data.date.replaceAll('-','/')}}</p>
+        </template>
+        
+        <!-- 操作栏按钮slot  -->
+        <template #handle="data">
+            <el-button type="danger" @click="deleteItem(data)">删除</el-button>
+            <el-button type="danger" @click="edit(data)">编辑</el-button>
+        </template>
+        
+  </CustormTable>
+```
+
+
+
+**tableConfig 配置项**
+
+| 参数                        | 说明                                        | 默认值              | 可选值 |
+| --------------------------- | ------------------------------------------- | ------------------- | ------ |
+| tableConfig.border          | 是否有border边线               | boolean型      |        |
+| tableConfig .stripe         | 是否有隔行纹理              | boolean型           |        |
+| tableConfig.maxHeight       | 表格最大高度,超过时将出现滚动条 默认800 | number型 |        |
+| tableConfig.selection       | 是否带有选择框，默认true                      | boolean型，默认值：true |        |
+| tableConfig.tableLayout | 表格分布方式 |  |  |
+| tableConfig .selectionFixed | 选择框固定位置 | string型     | left/right/true/false |
+| config.rowClassName |                                         | string型 ||
+| config.indexMethod | 自定义下标，返回一个number       | Number型  ||
+| config.cellClassName |                                         | string型 ||
+| config.showPagination | 是否带有分页组件 默认true      | boolean型 ||
+| config.showIndex | 是否带有下标序号列 默认true             | boolean型 ||
+| config.custormClass | 自定义表格class                         | string型 ||
+| config.selectable | 选择框可选条件                | Fuction型,返回一个boolean ||
+| @getSelectRow | 选中的记录 |                                          ||
+
+
+
+**tableColumnConfig配置项**
+
+| 参数                       | 说明                                 | 默认值             | 可选值 |
+| -------------------------- | ------------------------------------ | ------------------ | ------ |
+| tableColumnConfig.title    | 单元格标题                           | string型           |        |
+| tableColumnConfig .key     | 绑定的属性，需要展示的值 字段        | string型           |        |
+| tableColumnConfig.sortable | 是否带有排序功能                     | boolean型          |        |
+| tableColumnConfig.width    | 单元格宽度                           | string \| number型 |        |
+| tableColumnConfig.fixed    | 固定当前列                           | string \| boolean  |        |
+| tableColumnConfig .isMoney | 是否是金额，true会将数字转千分位展示 | boolean型          |        |
+
+
+
+**tableAttributes**  可配置element-ui table自带属性，优秀级低级当前组件属性和方法
+
+**tableEvents**  可配置element-ui table自带方法，优秀级低级当前组件属性和方法
+
+**loading**  表格加载动画 
+
+
+
+
+
+##### 预览
+
+![](http://server.yuhongshao.cn/static/yuhongshao/20220909160349.png)
+
+
+
+#### 搜索栏
+
+##### 使用
+
+```html
+<FormItemGroup
+      :formConfig="formConfig"
+      ref="formItemGroup"
+      @getFormData="getFormData"
+    >
+      <template #default="scope">
+        <div class="handle-btn">
+          <el-button
+            size="small"
+            icon="el-icon-refresh-left"
+            type="default"
+            @click="scope.reset"
+            >{{ $t("重置") }}</el-button
+          >
+          <el-button
+            size="small"
+            type="primary"
+            icon="el-icon-search"
+            @click="scope.search"
+            >{{ $t("查询") }}</el-button
+          >
+        </div>
+      </template>
+    </FormItemGroup>
+```
+
+
+
+**formConfig[] 配置**
+
+| 参数                             | 说明                                                   | 备注                                                         |
+| -------------------------------- | ------------------------------------------------------ | ------------------------------------------------------------ |
+| formConfig.label                 | 展示label                                              |                                                              |
+| formConfig.textAlign             | 展示label对齐方式                                      | 可选['left','center','right']                                |
+| formConfig.labelWidth            | 展示label文字的宽度                                    | Number类型，默认100                                          |
+| formConfig.formItemWidth         | input/select...宽度                                    | Number                                                       |
+| formConfig.key                   | 绑定的值字段 即v-model=""                              | 必填                                                         |
+| formConfig.type                  | 组件类型                                               | input<br>select<br/>selectAsync<br/>radio<br/>checkbox<br/>date<br/>dateRange<br/>dateTime<br/>dateTimeRange<br/>month<br/>selectRemoteMethod<br/> |
+| formConfig.value                 | 初始绑定的值                                           |                                                              |
+| require                          | 必填                                                   | 默认false,true时，必填不满足时，不向上提交 事件              |
+| formConfig.size                  | 操作框大小                                             | 默认small                                                    |
+| formConfig.options               | type='select'时，列表配置                              | options: [<br/> { label: "男", value: "1" },<br/> { label: "女", value: "2" }, <br/>] |
+| formConfig.remoteMethod          | type="select/selectAsync"时，远程调接口动态搜索        | 函数需要返回值 <br/>(formList, index, text) =>{ formList:是当前配置列表 index当前 配置项的下标 text当前输入的值 } |
+| formConfig.span                  | 布局与el-row>el-col :span相同                          | 可选[1-24]，如8时，表示一行展示3列                           |
+| formConfig.placeholder           | placeholder提示信息                                    |                                                              |
+| formConfig.clearable             | 是否展示清除按钮                                       | Boolean类型，默认true                                        |
+| formConfig.multiple              | type="select/selectAsync"时，是否可以多选列表          | Boolean类型，默认false                                       |
+| formConfig.collapseTags          | type="select/selectAsync"且多选时，多选项是否折叠      | 参考：[https://element-plus.gitee.io/zh-CN/component/select.html#select-%E5%B1%9E%E6%80%A7](https://element-plus.gitee.io/zh-CN/component/select.html#select-属性) |
+| formConfig.loadApi               | select异步时，可调用接口获取列表                       | 当数据列表来源于后台接口时，<br/>配置loadApi，底层将自动调用，<br/>并为options赋值 |
+| formConfig.rangSeparator         | type="dateRange/dateTimeRange"时,分割符                | 默认'-'                                                      |
+| formConfig.startPlaceholder      | 时间、日期范围选择时，开始时间的placeholder            |                                                              |
+| formConfig.endPlaceholder        | 时间、日期范围选择时，结束时间的placeholder            |                                                              |
+| formConfig.valueFormat           | 日期框返回的格式                                       | 默认yyyy-MM-dd                                               |
+| formConfig.disabledDate          | 日期禁用项配置                                         |                                                              |
+| formConfig.onChange              | ({formData, formList, index, e}: any, *that*: any)=>{} | formData（当前表单整体数据），<br/>formList（配置项列表），<br/>index(下标),<br/>e（输入的内容）<br/>that为当前组件实例 |
+| formConfig.onBlur                | ({formData, formList, index, e}: any, *that*: any)=>{} | formData（当前表单整体数据），<br/>formList（配置项列表），<br/>index(下标),<br/>e（输入的内容）<br/>that为当前组件实例 |
+| formConfig.onFocus               | ({formData, formList, index, e}: any, *that*: any)=>{} | formData（当前表单整体数据），<br/>formList（配置项列表），<br/>index(下标),<br/>e（输入的内容）<br/>that为当前组件实例 |
+| formConfig.**elementAttributes** | element操作框原生属性                                  |                                                              |
+
+##### 预览
+
+![](http://server.yuhongshao.cn/static/yuhongshao/20220909165442.png)
+
+##### 详细事例
+
+```js
+  formConfig: IFormSearch[] = [
+    {
+      label: 公司,
+      key: "company",
+      type: "selectRemoteMethod",
+      span: 6,
+      multiple: true,
+      collapseTags: true,
+      loadApi: async (params) => {
+        const data = await axios.post(url) || []
+        return data;
+      },
+    },
+    {
+      label: 学校,
+      key: "school",
+      type: "radio",
+      span: 6,
+      multiple: true,
+      collapseTags: true,
+      value: 1,
+      loadApi: [
+          {label: '重庆大学', value: 1},
+          {label: '北京大学', value: 2}
+      ],
+       onChange： ({formData, formList, index, e}: any, that: any)=>{
+    	   that.formData['curShool'] = e;	
+      }
+    },
+    {
+        label: '当前学校'，
+        key: 'curSchool',
+        type: 'input',
+        span: 6
+    }
+        
+   ]
+```
+
+
+
 ### 其它问题
+
+##### Q：两个及以上的搜索框依赖于同一个数据？ 
+
+现有如下配置，公司1、公司2共同使用后台同一个接口，如果直接配置，会出现页面调用两次`http://xxx.com/list`
+
+``````js
+  formConfig: IFormSearch[] = [
+    {
+      label: 公司1,
+      key: "company",
+      type: "selectRemoteMethod",
+      span: 6,
+      multiple: true,
+      collapseTags: true,
+      loadApi: async (params) => {
+        const data = await axios.post('http://xxx.com/list') || []
+        return data;
+      },
+    },
+    {
+      label: 公司2,
+      key: "company",
+      type: "selectRemoteMethod",
+      span: 6,
+      multiple: true,
+      collapseTags: true,
+      loadApi: async (params) => {
+        const data = await axios.post('http://xxx.com/list') || []
+        return data;
+      },
+    }
+   ]
+``````
+
+
+
+为避免这种情况，你可以调用代码如下
+
+``````js
+  formConfig: IFormSearch[] = [
+    {
+      label: 公司1,
+      key: "company",
+      type: "selectRemoteMethod",
+      span: 6,
+      multiple: true,
+      collapseTags: true,
+      loadApi: async (params) => {
+        const data = await this.getList();
+        return data;
+      },
+    },
+    {
+      label: 公司2,
+      key: "company",
+      type: "selectRemoteMethod",
+      span: 6,
+      multiple: true,
+      collapseTags: true,
+      loadApi: async (params) => {
+        const data = await this.getList();
+        return data;
+      },
+    }
+   ]
+  // data中定义存放变量
+  companyList: any = [];
+
+  public async getList(){
+      // 已经存在,直接返回数据
+      if(this.companyList){
+          return this.companyList
+      }
+      // 不存在，请求接口
+      const data  = await axios.post('http://xx.com/list');
+      this.companyList = data;
+      return data;
+  }
+``````
+
+
+
+### 其它异常
+
+由于工作原因测试不足，可能存在异常情况，如某些功能异常
+
+如果你已经使用了这套组件遇到了问题，可通过QQ: 1045749725与我联系，我将尽量解决你的问题和补充所需功能
+
