@@ -37,6 +37,7 @@
           width="80"
         />
         <el-table-column
+          v-for="(item, index) in getTableColumnConfig"
           :label="item.title"
           :key="index"
           :width="item.width || 'auto'"
@@ -102,9 +103,10 @@ export default class TableComponent extends Vue {
   @Prop({ default: ()=>{}}) tableAttributes!: any;
   @Prop({ default: ()=>{} }) tableEvents!: any;
 
-/*   // 获取当前表格配置信息
+  // 获取当前表格配置信息
   public get getTableColumnConfig() {
-    const isShowEditBtn: boolean = (this as any).$store.getters.getEditBtnShow;
+    return this.tableColumnConfig;
+   /*  const isShowEditBtn: boolean = (this as any).$store.getters.getEditBtnShow;
     if (isShowEditBtn) {
       return this.tableColumnConfig;
     } else {
@@ -114,8 +116,8 @@ export default class TableComponent extends Vue {
         }
       );
       return arr;
-    }
-  } */
+    } */
+  }
   // 表格配置项
   tableGlobalConfig: ITableConfig = {};
   // 选择的行
