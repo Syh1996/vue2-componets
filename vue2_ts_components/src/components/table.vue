@@ -189,7 +189,7 @@ export default {
       this.$emit("getSelectRow", val);
     },
     /** 分页变化 */
-    getPaginationData() {
+    getPaginationData(data) {
       this.$emit("currentPageChange", data);
     },
     /** @param { string | number | null }  value
