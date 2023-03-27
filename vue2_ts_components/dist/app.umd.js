@@ -37493,12 +37493,13 @@ const en = {
 
 
 
+
 const langData = {
   CN: zh,
   EN: en
 };
 const componenList = [formItemGroup, InputMoney, remoteMethodSelect, table_title, table, upload];
-const install = (Vue, options) => {
+const install = (Vue, options = {}) => {
   options.lang = options.lang || 'lang';
   let currentLang = localStorage.getItem(options.lang) || 'CN';
   if (!['CN', 'EN'].includes(currentLang)) {

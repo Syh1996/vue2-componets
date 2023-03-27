@@ -6,6 +6,7 @@ declare module '*.vue' {
 declare module 'element-ui/*'
 declare module '@lang/zh'
 declare module '@lang/en'
+declare module 'vue2_ts_components'
 
 
 declare module 'vue/types/vue' {

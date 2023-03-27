@@ -113,6 +113,9 @@ export default class App extends Vue {
         type: 'input',
         span: 6,
         value: 1,
+        elementAttributes:{
+          "show-password": true
+        }
     }
         
    ];

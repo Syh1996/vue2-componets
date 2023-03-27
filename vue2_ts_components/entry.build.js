@@ -1,3 +1,4 @@
+import 'element-ui/lib/theme-chalk/index.css';
 import FormItemGroup from '@Components/formItemGroup.vue';
 import InputMoney from '@Components/InputMoney.vue';
 import RemoteMethodSelect from '@Components/remoteMethodSelect.vue';
@@ -12,7 +13,7 @@ const langData = {
     EN: en
 }
 const componenList = [FormItemGroup, InputMoney, RemoteMethodSelect, ItemTitle, Table, Upload];
-const install = (Vue,options) => {
+const install = (Vue,options = {}) => {
     options.lang = options.lang || 'lang';
     let currentLang = localStorage.getItem(options.lang) || 'CN';
     if(!['CN','EN'].includes(currentLang)){
