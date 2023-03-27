@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <img alt="Vue logo" src="./assets/logo.png">
-    <TableTtile></TableTtile>
+    <TableTitle></TableTitle>
     <UploadGroup msg="Welcome to Your Vue.js + TypeScript App"/>
     <TableComponent
       :tableConfig="tableConfig"
@@ -34,7 +34,7 @@
   </TableComponent>
   <MoneyInput v-model="money"></MoneyInput>
   <h2>{{money}}</h2>
-  <FormItemGroup :formConfig="formConfig">
+  <FormGroup :formConfig="formConfig">
     <template #default="scope">
         <div class="handle-btn">
           <button
@@ -53,25 +53,17 @@
           >
         </div>
       </template>
-  </FormItemGroup>
+  </FormGroup>
   </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-import UploadGroup from '@Components/upload.vue';
-import TableTtile from '@Components/table-title.vue';
-import TableComponent from '@Components/table.vue';
-import MoneyInput from '@Components/InputMoney.vue';
-import FormItemGroup from '@Components/formItemGroup.vue';
+
 import axios from 'axios';
 @Component({
   components: {
-    UploadGroup,
-    TableComponent,
-    TableTtile,
-    MoneyInput,
-    FormItemGroup
+ 
   },
 })
 export default class App extends Vue {

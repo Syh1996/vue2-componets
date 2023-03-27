@@ -255,10 +255,10 @@ export default {
       td {
         text-align: center;
       }
-      .el-table__fixed::before,
+     /*  .el-table__fixed::before,
       .el-table__fixed-right::before {
         background-color: #ddd;
-      }
+      } */
       th,
       td {
         border-color: #ebeef5 !important;
