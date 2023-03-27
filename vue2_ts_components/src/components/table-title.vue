@@ -7,15 +7,19 @@
   </section>
 </template>
 
-<script lang="ts">
-import { Component, Prop } from "vue-property-decorator";
-import Vue from "vue";
-@Component({
-  name: 'TableTitle'
-})
-export default class TableTitle extends Vue {
-  @Prop({ default: "" }) title!: string;
-  @Prop({ default: "#2c75ec" }) themeColor!: string;
+<script>
+export default {
+   name: 'TableTitle',
+   props:{
+     title:{
+       type: String,
+       default: ''
+     },
+     themeColor:{
+       type: String,
+       default: "#2c75ec"
+     }
+   },
 }
 </script>
 

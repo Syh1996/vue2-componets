@@ -34,7 +34,7 @@
           :label="$t('SerialNo')"
           :index="tableGlobalConfig.indexMethod"
           v-if="tableGlobalConfig.showIndex"
-          :width="tableGlobalConfig.indexWidth || 80"
+          width="80"
         />
         <el-table-column
           v-for="(item, index) in getTableColumnConfig"
@@ -80,142 +80,129 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Watch } from "vue-property-decorator";
+import Vue from "vue";
 import { Table, TableColumn } from "element-ui";
-import Pagination from "@Components/pagination.vue";
-export default {
-  name: "TableComponent",
+import Pagination from "./pagination.vue";
+import { ITableConfig, ITableColumnConfig } from "../ts/comm";
+@Component({
+  name: 'TableComponent',
   components: {
     "el-table": Table,
     "el-table-column": TableColumn,
     Pagination,
   },
-  props: {
-    tableData: {
-      type: Array,
-      default: ()=>[],
-    },
-    tableColumnConfig: {
-      type: Array,
-      default: ()=>[],
-    },
-    tableConfig: {
-      type: Object,
-      default: ()=>({}),
-    },
-    paginationData: {
-      type: Object,
-      default: ()=>({}),
-    },
-    loading: {
-      type: Boolean,
-      default: false,
-    },
-    tableAttributes: {
-      type: Object,
-      default: ()=>({}),
-    },
-    tableEvents: {
-      type: Object,
-      default: ()=>({}),
-    },
-  },
-  data() {
-    return {
-      // 表格配置项
-      tableGlobalConfig: {},
-      // 选择的行
-      selectTr: { value: [] },
-      // 表数据
-      data: [],
-    };
-  },
-  computed: {
-    getTableColumnConfig() {
+})
+export default class TableComponent extends Vue {
+  @Prop({ default: () => [] }) tableData: any;
+  @Prop({ default: () => {} }) tableColumnConfig: any;
+  @Prop({ default: () => {} }) tableConfig?: ITableConfig;
+  @Prop({ default: () => {} }) paginationData?: any;
+  @Prop({ default: false }) loading!: boolean;
+  @Prop({ default: ()=>{}}) tableAttributes!: any;
+  @Prop({ default: ()=>{} }) tableEvents!: any;
+
+  // 获取当前表格配置信息
+  public get getTableColumnConfig() {
+    return this.tableColumnConfig;
+   /*  const isShowEditBtn: boolean = (this as any).$store.getters.getEditBtnShow;
+    if (isShowEditBtn) {
       return this.tableColumnConfig;
-    },
-  },
+    } else {
+      const arr: ITableColumnConfig[] = this.tableColumnConfig.filter(
+        (item: ITableColumnConfig) => {
+          return !["handle", "operation"].includes(item.key);
+        }
+      );
+      return arr;
+    } */
+  }
+  // 表格配置项
+  tableGlobalConfig: ITableConfig = {};
+  // 选择的行
+  selectTr: any = { value: [] };
+  // 表数据
+  data: any = [];
+
   /** mounted */
-  mounted() {
+  public mounted() {
     this.initTableGlobalConfig();
-    this.$bus.$on("clearTableTr", (res) => {
+    (this as any).$bus.$on("clearTableTr", (res: string) => {
       this.clearSelection();
     });
-  },
-  beforeDestroy() {
-    this.$bus.$off("clearTableTr");
-  },
-  methods: {
-    // 初始defaultSelectable
-    defaultSelectable(row, index) {
-      return true;
-    },
-    // 获取生成当前行key
-    getCurRowKey(row) {
-      return JSON.stringify({ ...row });
-    },
-    // 取消已选
-    clearSelection() {
-      if (this.$refs.tableComponentRef) {
-        this.$refs.tableComponentRef.clearSelection();
+  }
+  public beforeDestroy() {
+    (this as any).$bus.$off("clearTableTr");
+  }
+  // 初始defaultSelectable
+  public defaultSelectable(row: any, index: number) {
+    return true;
+  }
+  // 获取生成当前行key
+  public getCurRowKey(row: any) {
+    return JSON.stringify({ ...row });
+  }
+  // 取消已选
+  public clearSelection() {
+    if (this.$refs.tableComponentRef) {
+      (this.$refs.tableComponentRef as any).clearSelection();
+    }
+  }
+  //初始表单配置默认值
+  public initTableGlobalConfig() {
+    this.tableGlobalConfig = {
+      border: true,
+      stripe: true,
+      showIndex: true,
+      rowClassName: () => {
+        return "custorm-row";
+      },
+      indexMethod: (index: number) => {
+        return index + 1;
+      },
+      cellClassName: () => {
+        return "custorm-cell";
+      },
+      maxHeight: 800,
+      selection: true,
+      tableLayout: "fixed",
+      showPagination: true,
+      custormClass: "table-loading-box",
+      ...this.tableConfig,
+    };
+  }
+  // 表格选择
+  public handleSelectionChange(val: any) {
+    this.selectTr.value = val;
+    this.$emit("getSelectRow", val);
+  }
+  /** 分页变化 */
+  public getPaginationData(data: any) {
+    this.$emit("currentPageChange", data);
+  }
+  /** 格式化当前数据为金额 */
+  public forMatterMoney(value: string | number | null) {
+    const dataType: string = typeof value;
+    const reg = /^\-?\d+(\.\d+)?$/;
+    const formatter = (cur: string) => {
+      if (!cur || !reg.test(cur)) {
+        return cur;
       }
-    },
-    //初始表单配置默认值
-    initTableGlobalConfig() {
-      this.tableGlobalConfig = {
-        border: true,
-        stripe: true,
-        showIndex: true,
-        rowClassName: () => {
-          return "custorm-row";
-        },
-        indexMethod: (index) => {
-          return index + 1;
-        },
-        cellClassName: () => {
-          return "custorm-cell";
-        },
-        maxHeight: 800,
-        selection: true,
-        tableLayout: "fixed",
-        showPagination: true,
-        custormClass: "table-loading-box",
-        ...this.tableConfig,
-      };
-    },
-    // 表格选择
-    handleSelectionChange(val) {
-      this.selectTr.value = val;
-      this.$emit("getSelectRow", val);
-    },
-    /** 分页变化 */
-    getPaginationData() {
-      this.$emit("currentPageChange", data);
-    },
-    /** @param { string | number | null }  value
-     * 格式化当前数据为金额 */
-    forMatterMoney(value) {
-      const dataType = typeof value;
-      const reg = /^\-?\d+(\.\d+)?$/;
-      const formatter = (cur) => {
-        if (!cur || !reg.test(cur)) {
-          return cur;
-        }
-        const arr = cur.split(".") || [];
-        const xiaoshu = arr && arr.length >= 2 ? arr[1] : "00";
-        const subXiaoshu =
-          xiaoshu.length >= 2 ? xiaoshu.substring(0, 2) : `${xiaoshu}0`;
-        return Number(`${arr[0]}`).toLocaleString() + `.${subXiaoshu}`;
-      };
-      const typeFunctiony = {
-        string: () => formatter(value),
-        number: () => formatter(value.toString()),
-        object: () => value,
-      };
-      return typeFunction[dataType] ? typeFunction[dataType]() : "--";
-    },
-  },
-};
+      const arr: string[] = (cur as string).split(".") || [];
+      const xiaoshu: string = arr && arr.length >= 2 ? arr[1] : "00";
+      const subXiaoshu: string =
+        xiaoshu.length >= 2 ? xiaoshu.substring(0, 2) : `${xiaoshu}0`;
+      return Number(`${arr[0]}`).toLocaleString() + `.${subXiaoshu}`;
+    };
+    const typeFunction: any = {
+      string: () => formatter(value as string),
+      number: () => formatter((value as number).toString()),
+      object: () => value,
+    };
+    return typeFunction[dataType] ? typeFunction[dataType]() : "--";
+  }
+}
 </script>
 
 <style scoped lang="less">

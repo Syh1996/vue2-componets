@@ -2,11 +2,9 @@
 
 ### 使用背景
 
-`vue2_ts_component` 基于vue2.x + vue-property-decorator + vue-i18n 完成搭建。
+`vue2_ts_component` 基于vue2.x  完成搭建。
 
-使用建议为：项目为**vue2版本** ， 需要支持**国际化** ，项目为**TS**
-
-如果不是上述条件，不建议使用。然而安装所需组件后，依然可以正常使用，只是使用这套组件会造成项目略显臃肿。如你安装了多余的 `ts`  `vue-i18n`
+使用建议为：项目为**vue2版本** ，支持**国际化** 
 
 组件主要为系统管理产品提供较快封装组件。
 
@@ -16,45 +14,45 @@
 
 ```tex
 npm i vue2_ts_components
-npm i vue-i18n@8.28.2  
 ```
 
 #### 配置使用
 
 ```js
 import 'vue2_ts_components/dist/app.css';
-import {en} from 'vue2_ts_components/src/lang/en'; // 组件内部国际化
-import {zh} from 'vue2_ts_components/src/lang/zh'; // 组件内部国际化
 import vue2TSComponent from 'vue2_ts_components';
-import VueI18n from 'vue-i18n'
 
-Vue.use(VueI18n)
+/**
+   如果你需要使用ts约束分页、各类配置
+   你可以引入以下ts
+**/
+import 'vue2_ts_components/src/ts/comm.ts';
+
+
 Vue.use(vue2TSComponent);
 
 
-const messages = {
-  en: {
-    ...en,
-    // 扩展你自己的国际化英文
-  },
-  zh: {
-    ...zh，
-   // 扩展你自己的国际化英文
-  }
-}
-
-// 通过选项创建 VueI18n 实例
-const i18n = new VueI18n({
-  locale: localStorage.getItem('lang') || 'zh', // 设置地区
-  messages, // 设置地区信息
-})
-
 
 const data = new Vue({
-  i18n,
   render: h => h(App),
 }).$mount('#app')
 ```
+
+#### 国际化问题
+
+项目封装的组件已经完成了国际化中文 and 英文展示，通过`localStroge.getItem('lang')`来区分当前环境中英文
+
+其中`CN` 代表`中文`， `EN` 代表 `英文`
+
+有时候我们环境`localStroge.getItem('lang')` 已经用于其它变量，为些，你可以在`Vue.use(Vue2_ts_components,{lang: 'currentLang'})`  通过use方法，传递属性为lang的自定义取localStroge的字段。
+
+如
+
+```js
+Vue.use(Vue2_ts_components,{lang: '__current__lang'})
+```
+
+此时，内部组件将通过 stroge中的`__current__lang` 来判定当前使用环境
 
 
 
@@ -256,17 +254,18 @@ new Vue({
 
 | 参数                        | 说明                                        | 默认值              | 可选值 |
 | --------------------------- | ------------------------------------------- | ------------------- | ------ |
-| tableConfig.border          | 是否有border边线               | boolean型      |        |
-| tableConfig .stripe         | 是否有隔行纹理              | boolean型           |        |
-| tableConfig.maxHeight       | 表格最大高度,超过时将出现滚动条 默认800 | number型 |        |
-| tableConfig.selection       | 是否带有选择框，默认true                      | boolean型，默认值：true |        |
+| tableConfig.border          | 是否有border边线               | boolean型      | 默认true |
+| tableConfig .stripe         | 是否有隔行纹理              | boolean型           | 默认true |
+| tableConfig.maxHeight       | 表格最大高度,超过时将出现滚动条 | number型 | 默认800 |
+| tableConfig.selection       | 是否带有选择框，                      | boolean型，默认值：true | 默认true |
 | tableConfig.tableLayout | 表格分布方式 |  |  |
 | tableConfig .selectionFixed | 选择框固定位置 | string型     | left/right/true/false |
 | config.rowClassName |                                         | string型 ||
-| config.indexMethod | 自定义下标，返回一个number       | Number型  ||
+| config.indexMethod | 序号自定义下标，返回一个number     | Number型  ||
+| config.indexWidth | 序号显示宽度 | Number |80|
 | config.cellClassName |                                         | string型 ||
-| config.showPagination | 是否带有分页组件 默认true      | boolean型 ||
-| config.showIndex | 是否带有下标序号列 默认true             | boolean型 ||
+| config.showPagination | 是否带有分页组件                | oolean型                  |默认true|
+| config.showIndex | 是否带有下标序号列             | boolean型 |默认true|
 | config.custormClass | 自定义表格class                         | string型 ||
 | config.selectable | 选择框可选条件                | Fuction型,返回一个boolean ||
 | @getSelectRow | 选中的记录 |                                          ||
@@ -365,6 +364,7 @@ new Vue({
 | formConfig.onBlur                | ({formData, formList, index, e}: any, *that*: any)=>{} | formData（当前表单整体数据），<br/>formList（配置项列表），<br/>index(下标),<br/>e（输入的内容）<br/>that为当前组件实例 |
 | formConfig.onFocus               | ({formData, formList, index, e}: any, *that*: any)=>{} | formData（当前表单整体数据），<br/>formList（配置项列表），<br/>index(下标),<br/>e（输入的内容）<br/>that为当前组件实例 |
 | formConfig.**elementAttributes** | element操作框原生属性                                  |                                                              |
+| formConfig.syncResetFormData     | 异步设置表单中的值                                     | 假如搜索框内容默认值全部来源于接口<br>此时通过异步syncResetFormData = {name: 'xxx',age:xx}这将很用用 |
 
 ##### 预览
 
@@ -375,7 +375,7 @@ new Vue({
 ```js
   formConfig: IFormSearch[] = [
     {
-      label: 公司,
+      label: '公司',
       key: "company",
       type: "selectRemoteMethod",
       span: 6,
@@ -387,7 +387,7 @@ new Vue({
       },
     },
     {
-      label: 学校,
+      label: '学校',
       key: "school",
       type: "radio",
       span: 6,
@@ -398,18 +398,22 @@ new Vue({
           {label: '重庆大学', value: 1},
           {label: '北京大学', value: 2}
       ],
-       onChange： ({formData, formList, index, e}: any, that: any)=>{
+       onChange: ({formData, formList, index, e}: any, that: any)=>{
     	   that.formData['curShool'] = e;	
       }
     },
     {
-        label: '当前学校'，
+        label: '当前学校',
         key: 'curSchool',
         type: 'input',
-        span: 6
+        span: 6,
+        // 自定义element原生控制
+        elementAttributes:{
+            "show-password": true
+        }
     }
         
-   ]
+   ];
 ```
 
 

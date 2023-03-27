@@ -591,7 +591,9 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop, Watch } from "vue-property-decorator";
+import Vue from "vue";
 import {
   Row,
   Col,
@@ -604,8 +606,15 @@ import {
   Checkbox,
   CheckboxGroup,
 } from "element-ui";
-
-export default {
+import { IFormSearch } from "../ts/comm";
+interface IShortCutsTypeChild {
+  text: string;
+  onClick: (picker: any) => void;
+}
+interface IShortCutsType {
+  shortcuts: IShortCutsTypeChild[];
+}
+@Component({
   name: "FormGroup",
   components: {
     "el-row": Row,
@@ -619,188 +628,181 @@ export default {
     "el-checkbox": Checkbox,
     "el-checkbox-group": CheckboxGroup,
   },
-  props: {
-    formConfig: {
-      type: Array,
-      default: ()=>[],
-    },
-    syncResetFormData: {
-      type: Object,
-      default: ()=>({}),
-    },
-  },
-  data() {
-    return {
-      // 表格配置项
-      formList: [],
-      // 表单数据
-      formData: {},
-      // 语言
-      language: this.$lang,
-      // 必填项
-      requireKey: {},
-      // 记录多选时已经选中的列表
-      recordSelectedList: {},
-      // 日期设置
-      shortcutsDate: {
-        shortcuts: [
-          {
-            text: this.$t("threeDay"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date(Date.now() - 3 * 86400000);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("oneWeek"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date(Date.now() - 7 * 86400000);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("fixteenDay"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date(Date.now() - 15 * 86400000);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("oneMonth"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date();
-              start.setMonth(start.getMonth() - 1);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("threeMonth"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date();
-              start.setMonth(start.getMonth() - 3);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("sixMonth"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date();
-              start.setMonth(start.getMonth() - 6);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("oneYear"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date();
-              start.setFullYear(start.getFullYear() - 1);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("twoYear"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date();
-              start.setFullYear(start.getFullYear() - 2);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("threeYear"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date();
-              start.setFullYear(start.getFullYear() - 2);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-        ],
+})
+/** 搜索类 */
+export default class FormGroup extends Vue {
+  @Prop({ default: [] }) formConfig!: any;
+  @Prop({ default: () => {} }) syncResetFormData?: any;
+  // 表格配置项
+  formList: any = [];
+  // 表单数据
+  formData: any = {};
+  // 语言
+  language: string = "CN";
+  // 日期设置
+  shortcutsDate: IShortCutsType = {
+    shortcuts: [
+      {
+        text: (this as any).$t("threeDay") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date(Date.now() - 3 * 86400000);
+          picker.$emit("pick", [start, end]);
+        },
       },
-      // 时间设置
-      shortcutsTime: {
-        shortcuts: [
-          {
-            text: this.$t("currentDay"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date(Date.now() - 1 * 86400000);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("threeDay"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date(Date.now() - 3 * 86400000);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("oneWeek"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date(Date.now() - 7 * 86400000);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("oneMonth"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date();
-              start.setMonth(start.getMonth() - 1);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("threeMonth"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date();
-              start.setMonth(start.getMonth() - 3);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("sixMonth"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date();
-              start.setMonth(start.getMonth() - 6);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-          {
-            text: this.$t("oneYear"),
-            onClick: (picker) => {
-              const end = new Date();
-              const start = new Date();
-              start.setFullYear(start.getFullYear() - 1);
-              picker.$emit("pick", [start, end]);
-            },
-          },
-        ],
+      {
+        text: (this as any).$t("oneWeek") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date(Date.now() - 7 * 86400000);
+          picker.$emit("pick", [start, end]);
+        },
       },
-    };
-  },
+      {
+        text: (this as any).$t("fixteenDay") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date(Date.now() - 15 * 86400000);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("oneMonth") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date();
+          start.setMonth(start.getMonth() - 1);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("threeMonth") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date();
+          start.setMonth(start.getMonth() - 3);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("sixMonth") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date();
+          start.setMonth(start.getMonth() - 6);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("oneYear") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date();
+          start.setFullYear(start.getFullYear() - 1);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("twoYear") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date();
+          start.setFullYear(start.getFullYear() - 2);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("threeYear") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date();
+          start.setFullYear(start.getFullYear() - 2);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+    ],
+  };
+  // 时间设置
+  shortcutsTime: IShortCutsType = {
+    shortcuts: [
+      {
+        text: (this as any).$t("currentDay") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date(Date.now() - 1 * 86400000);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("threeDay") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date(Date.now() - 3 * 86400000);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("oneWeek") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date(Date.now() - 7 * 86400000);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("oneMonth") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date();
+          start.setMonth(start.getMonth() - 1);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("threeMonth") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date();
+          start.setMonth(start.getMonth() - 3);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("sixMonth") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date();
+          start.setMonth(start.getMonth() - 6);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+      {
+        text: (this as any).$t("oneYear") as string,
+        onClick: (picker) => {
+          const end = new Date();
+          const start = new Date();
+          start.setFullYear(start.getFullYear() - 1);
+          picker.$emit("pick", [start, end]);
+        },
+      },
+    ],
+  };
+  // 必填项
+  requireKey: any = {};
+  // 记录多选时已经选中的列表
+  recordSelectedList: any = {};
+
   /** created */
-  created() {
-    this.language = this.$lang;
-    this.formList = this.formConfig.map((item) => {
+  public created() {
+    const language: string = localStorage.getItem('lang') || 'CN';
+    this.language = language;
+    this.formList = this.formConfig.map((item: any) => {
       item.span =
-        this.language === "EN" && item.span && item.span < 8 ? 8 : item.span;
+        language === "EN" && item.span && item.span < 8 ? 8 : item.span;
       item.labelWidth =
         item.labelWidth || item.labelWidth === 0
           ? `0 0 ${item.labelWidth}px`
-          : this.language === "EN"
+          : language === "EN"
           ? "0 0 170px"
           : "0 0 120px";
       item.onChange = item.onChange || this.defaultFunction;
@@ -809,7 +811,7 @@ export default {
       if (item.type === "selectRemoteMethod") {
         item.remoteMethod =
           item.remoteMethod ||
-          (async (query, itemConfig) => {
+          (async (query: string, itemConfig: any) => {
             if (!query) {
               return;
             }
@@ -818,7 +820,7 @@ export default {
               const currentEachConfig = arr[i];
               if (currentEachConfig.key === itemConfig.key) {
                 currentEachConfig.loading = true;
-                const result =
+                const result: any =
                   (await item.loadApi({
                     msg: query,
                   })) || [];
@@ -826,10 +828,11 @@ export default {
                   this.recordSelectedList[itemConfig.key] || [];
                 const recordSelectedListValues = Array.from(
                   recordSelectedList,
-                  (cur) => cur.value
+                  (cur: any) => cur.value
                 );
+     
                 const deleteFullArray = result.filter(
-                  (cur) => !recordSelectedListValues.includes(cur.value)
+                  (cur: any) => !recordSelectedListValues.includes(cur.value)
                 );
                 const allArray = [...deleteFullArray, ...recordSelectedList];
                 // const allArray = [...recordSelectedList,...deleteFullArray];
@@ -846,15 +849,16 @@ export default {
 
       return item;
     });
-    this.formList.forEach((cur) => {
+    this.formList.forEach((cur: any) => {
       if (["checkbox"].includes(cur.type)) {
         this.$set(this.formData, cur.key, cur.value || []);
       } else {
         this.$set(this.formData, cur.key, cur.value || "");
       }
     });
-  },
-  async mounted() {
+  }
+  /** mounted */
+  public async mounted() {
     const arr = [...this.formList];
     for (let i in arr) {
       const cur = arr[i];
@@ -865,153 +869,144 @@ export default {
       }
     }
     this.formList = arr;
-  },
-  methods: {
-    /** 默认函数  */
-    defaultFunction() {
-      return "no event";
-    },
-    /**
-     * 记录选中的options
-     */
-    recordSelectedOptions(item) {
-      const arr = item.options.filter((cur) =>
-        this.formData[item.key].includes(cur.value)
-      );
-      const originItemKeyArray = this.recordSelectedList[item.key]
-        ? this.recordSelectedList[item.key]
-        : [];
-      const deleteFullArrayString = [
-        ...new Set(
-          Array.from([...originItemKeyArray, ...arr], (cur) =>
-            JSON.stringify(cur)
-          )
-        ),
-      ];
-      const deleteFullArray = Array.from(deleteFullArrayString, (cur) =>
-        JSON.parse(cur)
-      );
-      this.recordSelectedList = {
-        [item.key]: deleteFullArray,
-      };
-    },
-
-    /**
-     * @param { any } item
-     * @param { "onChange" | "onBlur" | "onFocus" } eventType
-     * @param { any } config
-     * 调配置项item event
-     *  */
-    itemEvent(item, eventType, config) {
-      item[eventType](config, this);
-    },
-
-    /**
-     * @param { "search" | "reset" } type
-     * 获取查询时的参数
-     * */
-    getBtnClickArguments(type) {
-      return { type, data: this.getFormData() };
-    },
-    /** 搜索  */
-    search() {
-      const data = this.getBtnClickArguments("search");
-      const requireDataIsok = Object.keys(this.requireKey).every((item) => {
+  }
+  /** 默认函数  */
+  public defaultFunction() {
+    return "no event";
+  }
+  /**
+   * 记录选中的options
+   */
+  public recordSelectedOptions(item: any) {
+    const arr = item.options.filter((cur: any) =>
+      this.formData[item.key].includes(cur.value)
+    );
+    const originItemKeyArray = this.recordSelectedList[item.key]
+      ? this.recordSelectedList[item.key]
+      : [];
+    const deleteFullArrayString = [
+      ...new Set(
+        Array.from([...originItemKeyArray, ...arr], (cur) =>
+          JSON.stringify(cur)
+        )
+      ),
+    ];
+    const deleteFullArray = Array.from(deleteFullArrayString, (cur) =>
+      JSON.parse(cur)
+    );
+    this.recordSelectedList = {
+      [item.key]: deleteFullArray,
+    };
+  }
+  /** 调配置项item event */
+  public itemEvent(
+    item: any,
+    eventType: "onChange" | "onBlur" | "onFocus",
+    config: any
+  ) {
+    item[eventType](config, this);
+  }
+  /** 获取查询时的参数 */
+  public getBtnClickArguments(type: "search" | "reset") {
+    return { type, data: this.getFormData() };
+  }
+  /** 搜索  */
+  public search() {
+    const data: any = this.getBtnClickArguments("search");
+    const requireDataIsok: boolean = Object.keys(this.requireKey).every(
+      (item: string) => {
         return data.data[item] || data.data[item] === 0;
-      });
-      // 初始化
-      this.formList = this.formList.map((item) => {
-        if (item.require) {
-          item.emptyValueAnimate = false;
-        }
-        return item;
-      });
-      if (!requireDataIsok) {
-        // 增加红色必填提示
-        setTimeout(() => {
-          this.formList = [...this.formList].map((item) => {
-            const value = data.data[item.key];
-            if (item.require && !value && value !== 0) {
-              item.emptyValueAnimate = true;
-            } else if (item.require) {
-              item.emptyValueAnimate = false;
-            }
-            return item;
-          });
-        }, 0);
-        return;
       }
-
-      this.$emit("getFormData", data);
-      this.$bus.$emit("clearTableTr");
-      return data;
-    },
-    /** 重置 */
-    reset() {
-      this.formList = this.formList.map((item) => {
-        item.value = "";
-        if (item.require) {
-          item.emptyValueAnimate = false;
-        }
-        return item;
-      });
-
-      for (let key in this.formData) {
-        this.formData[key] = "";
+    );
+    // 初始化
+    this.formList = this.formList.map((item: any) => {
+      if (item.require) {
+        item.emptyValueAnimate = false;
       }
-      const data = this.getBtnClickArguments("reset");
-      const requireDataIsok = Object.keys(this.requireKey).every((item) => {
+      return item;
+    });
+    if (!requireDataIsok) {
+      // 增加红色必填提示
+      setTimeout(() => {
+        this.formList = [...this.formList].map((item: any) => {
+          const value: string | number = data.data[item.key];
+          if (item.require && !value && value !== 0) {
+            item.emptyValueAnimate = true;
+          } else if (item.require) {
+            item.emptyValueAnimate = false;
+          }
+          return item;
+        });
+      }, 0);
+      return;
+    }
+
+    this.$emit("getFormData", data);
+    (this as any).$bus.$emit("clearTableTr");
+    return data;
+  }
+  /** 重置 */
+  public reset() {
+    this.formList = this.formList.map((item: any) => {
+      item.value = "";
+      if (item.require) {
+        item.emptyValueAnimate = false;
+      }
+      return item;
+    });
+
+    for (let key in this.formData) {
+      this.formData[key] = "";
+    }
+    const data: any = this.getBtnClickArguments("reset");
+    const requireDataIsok: boolean = Object.keys(this.requireKey).every(
+      (item: string) => {
         return data.data[item] || data.data[item] === 0;
-      });
-      if (!requireDataIsok) {
-        return;
       }
-      this.$emit("getFormData", data);
-      this.$bus.$emit("clearTableTr");
-      return data;
-    },
+    );
+    if (!requireDataIsok) {
+      return;
+    }
+    this.$emit("getFormData", data);
+    (this as any).$bus.$emit("clearTableTr");
+    return data;
+  }
 
-    // 获取参数数据
-    getFormData() {
-      let data = { ...this.formData };
-      const obj = {};
-      for (let i in data) {
-        const cur = data[i];
-        if (Array.isArray(cur)) {
-          obj[i] = cur.join(",");
-        } else {
-          obj[i] = cur;
-        }
+  // 获取参数数据
+  public getFormData() {
+    let data: any = { ...this.formData };
+    const obj: any = {};
+    for (let i in data) {
+      const cur = data[i];
+      if (Array.isArray(cur)) {
+        obj[i] = cur.join(",");
+      } else {
+        obj[i] = cur;
       }
-      // 处理数据
-      return obj;
-    },
-  },
-    watch: {
-      'formData': {
-        handler(newVal) {
-          this.$emit("watchFormData", newVal);
-        },
-        deep: true,
-        immediate: true,
-      },
-      'syncResetFormData': {
-        handler(newVal) {
-          if (newVal.constructor !== Object) {
-            throw "重置formItemGroup.vue子组件搜索框内容时，只能传入一个对象";
-          }
-          const opt = {};
-          for (let i in newVal) {
-            if (this.formData.hasOwnProperty(i)) {
-              opt[i] = newVal[i];
-            }
-          }
-          this.formData = { ...this.formData, ...opt };
-        },
-        deep: true,
-      },
-    },
-};
+    }
+    // 处理数据
+    return obj;
+  }
+  /** 实时监听上传父组件当前搜索条件 */
+  @Watch("formData", { deep: true, immediate: true }) getCurrentFormData(
+    newVal: any
+  ) {
+    this.$emit("watchFormData", newVal);
+  }
+  /** 监听父组件传入的绑定值，用于重置搜索框内容 */
+  @Watch("syncResetFormData", { deep: true }) resetFormDataChange(newVal: any) {
+    if (newVal.constructor !== Object) {
+      throw "重置formItemGroup.vue子组件搜索框内容时，只能传入一个对象";
+    }
+    const opt: any = {};
+    for (let i in newVal) {
+      if (this.formData.hasOwnProperty(i)) {
+        opt[i] = newVal[i];
+      }
+    }
+    this.formData = { ...this.formData, ...opt };
+  }
+}
 </script>
 
 <style lang="less">

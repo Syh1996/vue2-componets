@@ -15,9 +15,7 @@
   </section>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
-import { Component, Prop, Watch } from "vue-property-decorator";
+<script>
 import { Pagination } from "element-ui";
 const defaultConfig = {
   align: "right",
@@ -30,57 +28,69 @@ const defaultConfig = {
   disabled: false,
   layout: "total, prev, pager, next,sizes, jumper",
 };
-@Component({
-  name: 'PaginationComponent',
+export default {
+  name: "PaginationComponent",
   components: {
     "el-pagination": Pagination,
   },
-})
-/** 分页组件  */
-export default class PaginationComponent extends Vue {
-  @Prop({ default: () => {} }) config?: any;
-  @Watch("config", { deep: true, immediate: true }) configChange(newVal: any) {
-    this.custormConfig = { ...this.custormConfig, ...(this.config || {}) };
-  }
-  // 自定义配置
-  custormConfig: any = { ...defaultConfig };
-
-  /** 分页大小变化 */
-  public handleSizeChange = (val: number) => {
-    this.custormConfig.pageSize = val;
-    this.custormConfig.currentPage = 1;
-    this.$emit("getPaginationData", {
-      ...this.getPaginationData(),
-      pageSize: val,
-      currentPage: 1
-    });
-  };
-  /** 获取分页信息 */
-  public getPaginationData() {
+  props: {
+    config: {
+      type: Object,
+      default: ()=>({}),
+    },
+  },
+  data() {
     return {
-      currentPage: this.custormConfig.currentPage,
-      pageSize: this.custormConfig.pageSize,
-      total: this.custormConfig.total,
+      custormConfig: { ...defaultConfig },
     };
-  }
-  /** 当前页变化 */
-  public handleCurrentChange(val: number) {
-    this.custormConfig.currentPage = val;
-    this.$emit("getPaginationData", {
-      ...this.getPaginationData(),
-      currentPage: val,
-    });
-    if (val >= 30) {
-      document.documentElement.scrollTop = 0;
-    }
-  }
-  /** 重置分页 */
-  public resetPagination() {
-    this.custormConfig.currentPage = 1;
-    this.custormConfig.pageSize = 10;
-    this.custormConfig.total = 0;
-  }
-}
+  },
+  methods: {
+    /** 分页大小变化 */
+    handleSizeChange(val) {
+      this.custormConfig.pageSize = val;
+      this.custormConfig.currentPage = 1;
+      this.$emit("getPaginationData", {
+        ...this.getPaginationData(),
+        pageSize: val,
+        currentPage: 1,
+      });
+    },
+    /** 获取分页信息 */
+    getPaginationData() {
+      return {
+        currentPage: this.custormConfig.currentPage,
+        pageSize: this.custormConfig.pageSize,
+        total: this.custormConfig.total,
+      };
+    },
+    /** 当前页变化 */
+    handleCurrentChange(val) {
+      this.custormConfig.currentPage = val;
+      this.$emit("getPaginationData", {
+        ...this.getPaginationData(),
+        currentPage: val,
+      });
+      if (val >= 30) {
+        document.documentElement.scrollTop = 0;
+      }
+    },
+    /** 重置分页 */
+    resetPagination() {
+      this.custormConfig.currentPage = 1;
+      this.custormConfig.pageSize = 10;
+      this.custormConfig.total = 0;
+    },
+  },
+  watch: {
+    config: {
+      handler(newVal) {
+        this.custormConfig = { ...this.custormConfig, ...(newVal || {}) };
+      },
+      deep: true,
+      immediate: true,
+    },
+  },
+};
 </script>
 
 <style scoped lang="less">

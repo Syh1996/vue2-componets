@@ -4,7 +4,7 @@
       type="default"
       icon="el-icon-upload"
       size="small"
-      @click="disabled ? (dialogVisible = false) : (dialogVisible = true)"
+      @click="disabled ? dialogVisible = false  : dialogVisible = true"
       :disabled="disabled"
       >{{ title || $t("uploadImport") }}</Button
     >
@@ -57,115 +57,100 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
+import { Component, Prop } from "vue-property-decorator";
+import Vue from "vue";
 import { Button, Dialog, Progress } from "element-ui";
-export default {
-  name: "UploadGroup",
+@Component({
+  name: 'UploadGroup',
   components: {
     Button,
     Dialog,
     Progress,
   },
-  props: {
-    callBack: {
-      type: Function,
-      default: () => {},
-    },
-    fn: {
-      type: Function,
-      default: () => {},
-    },
-    title: {
-      type: String,
-      default: ''
-    },
-    uploadFileExt: {
-      type: Array,
-      default: () =>["xlsx", "xls"],
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    }
-  },
-  data() {
-    return {
-      // 加载中
-      isLoading: false,
-      // 是否展示dialog
-      dialogVisible: false,
+})
+export default class UploadGroup extends Vue {
+  @Prop({ default: () => {} }) callBack?: any;
+  @Prop({ default: () => {} }) fn?: any; // 导入调用的接口
+  @Prop({}) title?: string;
+  @Prop({}) disabled?: boolean;
+  @Prop({ default: ()=>["xlsx", "xls"] }) uploadFileExt!: string[];
 
-      fileName: "",
-      uploadNumber: 0,
-    };
-  },
-  methods: {
-    /** 选择文件 */
-    openFileChcked() {
-      this.$refs.file.click();
-    },
-    /** 文件清除 */
-    deleteFile() {
-      this.fileName = "";
-      this.$refs.file.value = "";
-      this.uploadNumber = 0;
-    },
-    /** 关闭 */
-    dialogClose() {
-      this.deleteFile();
-    },
-    /** 文件变化 */
-    async fileChange(e) {
-      if (e) {
-        const exts = this.uploadFileExt;
-        const name = e.target.files[0].name;
-        this.fileName = name;
-        const ext = name.substring(name.lastIndexOf(".") + 1);
-        if (!exts.includes(ext.toLowerCase())) {
-          this.$message({
-            type: "warning",
-            message: this.$t("uploadExtErr"),
-          });
-          this.fileName = "";
-          this.$refs.file.value = "";
-          return;
-        }
+  // 加载中
+  isLoading: boolean = false;
+  /* @Prop({ default: "" }) url!: string; */
+  // 是否展示dialog
+  dialogVisible: boolean = false;
+
+  fileName: string = "";
+  uploadNumber: number = 0;
+  /** 选择文件 */
+  public openFileChcked() {
+    (this.$refs.file as any).click();
+  }
+  /** 文件清除 */
+  public deleteFile() {
+    this.fileName = "";
+    (this.$refs.file as any).value = "";
+    this.uploadNumber = 0;
+  }
+  /** 关闭 */
+  public dialogClose() {
+    this.deleteFile();
+  }
+  /** 文件变化 */
+  public async fileChange(e: any) {
+    if (e) {
+      const exts = this.uploadFileExt;
+      const name: string = e.target.files[0].name;
+      this.fileName = name;
+      const ext: string = name.substring(name.lastIndexOf(".") + 1);
+      if (!exts.includes(ext.toLowerCase())) {
+        (this as any).$message({
+          type: "warning",
+          message: (this as any).$t("uploadExtErr") as string,
+        });
+        this.fileName = "";
+        (this.$refs.file as any).value = "";
+        return;
       }
-    },
+    }
+  }
 
-    /** 文件转arrayBuffer */
-    async toBuffer(file, func = () => {}) {
-      return new Promise((resolve) => {
-        let reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = function () {
-          const dataURI = this.result;
-          var byteString = atob(dataURI.split(",")[1]);
-          var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
-          var ab = new ArrayBuffer(byteString.length);
-          var ia = new Uint8Array(ab);
-          for (var i = 0; i < byteString.length; i++) {
-            ia[i] = byteString.charCodeAt(i);
-          }
-          const blob = new Blob([ab], { type: mimeString });
-          let reader2 = new FileReader();
-          reader2.onload = function (result) {
-            resolve(func(result.target.result));
-          };
-          reader2.readAsArrayBuffer(blob);
+  /** 文件转arrayBuffer */
+  public async toBuffer(file: File, func: (data: any) => void): Promise<any> {
+    return new Promise((resolve) => {
+      let reader: FileReader = new FileReader();
+      reader.readAsDataURL(file);
+      reader.onload = function () {
+        const dataURI: any = this.result;
+        var byteString = atob(dataURI.split(",")[1]);
+        var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+        var ab = new ArrayBuffer(byteString.length);
+        var ia = new Uint8Array(ab);
+        for (var i = 0; i < byteString.length; i++) {
+          ia[i] = byteString.charCodeAt(i);
+        }
+        const blob = new Blob([ab], { type: mimeString });
+        let reader2 = new FileReader();
+        reader2.onload = function (result: any) {
+          resolve(func(result.target.result));
         };
-      });
-    },
+        reader2.readAsArrayBuffer(blob);
+      };
+    });
+  }
 
-    /** 上传进度 */
-    onUploadProgress(data) {
-      this.uploadNumber = Math.floor((data.loaded / data.total) * 100);
-    },
-    /** 上传到服务器 */
-    async uploadServer() {
-      const files = this.$refs.file.files;
-      if (files && files.length) {
-        this.isLoading = true;
+
+  /** 上传进度 */
+  public onUploadProgress(data: any) {
+    this.uploadNumber = Math.floor((data.loaded / data.total) * 100);
+  }
+  /** 上传到服务器 */
+  public async uploadServer() {
+    const files = (this.$refs.file as any).files;
+    if (files && files.length) {
+      this.isLoading = true;
         // 上传文件
         try {
           // const data = await uploadFile([files[0]]);
@@ -177,10 +162,9 @@ export default {
         } catch (e) {
           this.callBack(null);
         }
-      }
-    },
-  },
-};
+  }
+}
+}
 </script>
 
 <style scoped lang="less">
@@ -242,7 +226,7 @@ export default {
           margin-right: 0;
         }
       }
-      .el-progress {
+      .el-progress{
         width: 480px;
         margin: 10px auto 0;
       }

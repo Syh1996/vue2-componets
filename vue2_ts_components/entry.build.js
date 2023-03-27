@@ -1,45 +1,30 @@
-/* import 'normalize.css'; // css样式初始化
-import 'element-ui/lib/theme-chalk/index.css';
 import FormItemGroup from '@Components/formItemGroup.vue';
 import InputMoney from '@Components/InputMoney.vue';
 import RemoteMethodSelect from '@Components/remoteMethodSelect.vue';
 import ItemTitle from '@Components/table-title.vue';
 import Table from '@Components/table.vue';
 import Upload from '@Components/upload.vue';
-import { Loading, MessageBox, Message, Notification } from 'element-ui';
-
-
-
-const componenList = [FormItemGroup, InputMoney, RemoteMethodSelect, ItemTitle, Table, Upload];
-const install = (Vue) => {
-    Vue.prototype.$loading = Loading.service;
-    Vue.prototype.$msgbox = MessageBox;
-    Vue.prototype.$alert = MessageBox.alert;
-    Vue.prototype.$confirm = MessageBox.confirm;
-    Vue.prototype.$prompt = MessageBox.prompt;
-    Vue.prototype.$notify = Notification;
-    Vue.prototype.$message = Message;
-    Vue.prototype.$bus = new Vue();
-
-    
-    componenList.forEach(item => {
-        Vue.component(item.name, item);
-    })
+import { zh } from '@lang/zh';
+import { en } from '@lang/en';
+import {  Message, Loading } from 'element-ui';
+const langData = {
+    CN: zh,
+    EN: en
 }
-export default install;
-
-
- */
-
-import FormItemGroup from '@Components/formItemGroup.vue';
-import InputMoney from '@Components/InputMoney.vue';
-import RemoteMethodSelect from '@Components/remoteMethodSelect.vue';
-import ItemTitle from '@Components/table-title.vue';
-import Table from '@Components/table.vue';
-import Upload from '@Components/upload.vue';
 const componenList = [FormItemGroup, InputMoney, RemoteMethodSelect, ItemTitle, Table, Upload];
-const install = (Vue) => {
+const install = (Vue,options) => {
+    options.lang = options.lang || 'lang';
+    let currentLang = localStorage.getItem(options.lang) || 'CN';
+    if(!['CN','EN'].includes(currentLang)){
+        currentLang = 'CN'
+    }
+    Vue.use(Loading.directive)
     Vue.prototype.$bus = new Vue();
+    Vue.prototype.$lang =currentLang;
+    Vue.prototype.$message = Message;
+    Vue.prototype.$t = key=>{
+        return langData[currentLang][key] || key;
+    }
     componenList.forEach(item => {
         Vue.component(item.name, item);
     })

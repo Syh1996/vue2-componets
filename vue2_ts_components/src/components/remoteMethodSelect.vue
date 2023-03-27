@@ -21,73 +21,83 @@
     ></Option>
   </Select>
 </template>
-<script lang="ts">
-import { Component, Prop, Watch } from "vue-property-decorator";
-import Vue from "vue";
+<script>
 import { Select, Option } from "element-ui";
-import { IOptions } from "@/ts/comm";
-@Component({
-  name: 'RemoteMethodSelect',
+export default {
+  name: "RemoteMethodSelect",
   components: {
     Select,
     Option,
   },
-})
-export default class RemoteMethodSelect extends Vue {
-  modelValue: any = {};
-  loading: boolean = false;
-  options: IOptions[] = [];
-  @Prop({
-    required: true,
-  })
-  loadApi!: (query: any) => any;
-  @Prop({
-    default: "ouParam",
-  })
-  queryKey!: string;
-  @Prop({}) value!: string;
-  @Prop({default: false}) disabled!: boolean;
-  @Watch("value", {
-    immediate: true,
-  })
-  public valueInit(newValue: any, oldValue: any) {
-    if (newValue && newValue !== this.modelValue) {
-      this.modelValue = newValue;
-      this.getOptions();
-    }
-  }
-  /** 初始时获取默认列表 */
-  public async getOptions() {
-    const data =
-      (await this.loadApi({
-        [this.queryKey]: this.modelValue,
-      })) || [];
-    this.options = data;
-    this.$emit("getFullData", this.options, this.modelValue);
-  }
-  /**
-   *  远程搜索
-   */
-  public async remoteMethod(value: string) {
-    if (!value.trim()) {
-      return;
-    }
-
-    const query: any = {
-      [this.queryKey]: value,
+  props: {
+    loadApi: {
+      type: Function,
+      require: true,
+    },
+    queryKey: {
+      type: String,
+      default: "ouParam",
+    },
+    value: {
+      type: String,
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      modelValue: {},
+      loading: false,
+      options: [],
     };
-    this.loading = true;
-    const data = (await this.loadApi(query)) || [];
-    this.options = data;
-    this.loading = false;
-  }
-  /**
-   * 选择数据
-   */
-  public selectChange(data: any) {
-    // const rows = this.options.find((item: any) => item.value === data);
-    this.$emit("input", data);
-    this.$emit("getFullData", this.options, data);
-  }
-}
+  },
+  methods: {
+    /** 初始时获取默认列表 */
+    async getOptions() {
+      const data =
+        (await this.loadApi({
+          [this.queryKey]: this.modelValue,
+        })) || [];
+      this.options = data;
+      this.$emit("getFullData", this.options, this.modelValue);
+    },
+    /**
+     *  远程搜索
+     */
+    async remoteMethod(value) {
+      if (!value.trim()) {
+        return;
+      }
+
+      const query = {
+        [this.queryKey]: value,
+      };
+      this.loading = true;
+      const data = (await this.loadApi(query)) || [];
+      this.options = data;
+      this.loading = false;
+    },
+    /**
+     * 选择数据
+     */
+    selectChange(data) {
+      // const rows = this.options.find((item: any) => item.value === data);
+      this.$emit("input", data);
+      this.$emit("getFullData", this.options, data);
+    },
+  },
+  watch: {
+    value: {
+      handler(newValue) {
+        if (newValue && newValue !== this.modelValue) {
+          this.modelValue = newValue;
+          this.getOptions();
+        }
+      },
+      immediate: true,
+    },
+  },
+};
 </script>

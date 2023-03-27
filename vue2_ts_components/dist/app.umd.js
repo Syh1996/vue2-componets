@@ -35364,11 +35364,10 @@ if (typeof window !== 'undefined') {
 // Indicate to webpack that this file can be concatenated
 /* harmony default export */ var setPublicPath = (null);
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/formItemGroup.vue?vue&type=template&id=35beeb39&
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/formItemGroup.vue?vue&type=template&id=529d9826&
 var render = function render() {
   var _vm = this,
-    _c = _vm._self._c,
-    _setup = _vm._self._setupProxy;
+    _c = _vm._self._c;
   return _c('section', {
     class: ['form-item-group', _vm.language === 'EN' ? 'EN' : 'CN']
   }, [_c('el-row', _vm._l(_vm.formList, function (item, index) {
@@ -35948,734 +35947,184 @@ var render = function render() {
 };
 var staticRenderFns = [];
 
-;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/typeof.js
-function _typeof(obj) {
-  "@babel/helpers - typeof";
-
-  return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) {
-    return typeof obj;
-  } : function (obj) {
-    return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-  }, _typeof(obj);
-}
-;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toPrimitive.js
-
-function _toPrimitive(input, hint) {
-  if (_typeof(input) !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (_typeof(res) !== "object") return res;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (hint === "string" ? String : Number)(input);
-}
-;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/toPropertyKey.js
-
-
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-  return _typeof(key) === "symbol" ? key : String(key);
-}
-;// CONCATENATED MODULE: ./node_modules/@babel/runtime/helpers/esm/defineProperty.js
-
-function _defineProperty(obj, key, value) {
-  key = _toPropertyKey(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-// EXTERNAL MODULE: external {"commonjs":"vue","commonjs2":"vue","root":"Vue"}
-var external_commonjs_vue_commonjs2_vue_root_Vue_ = __webpack_require__(7203);
-var external_commonjs_vue_commonjs2_vue_root_Vue_default = /*#__PURE__*/__webpack_require__.n(external_commonjs_vue_commonjs2_vue_root_Vue_);
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.push.js
-var es_array_push = __webpack_require__(7658);
-;// CONCATENATED MODULE: ./node_modules/vue-class-component/dist/vue-class-component.esm.js
-
-/**
-  * vue-class-component v7.2.6
-  * (c) 2015-present Evan You
-  * @license MIT
-  */
-
-function vue_class_component_esm_typeof(obj) {
-  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
-    vue_class_component_esm_typeof = function (obj) {
-      return typeof obj;
-    };
-  } else {
-    vue_class_component_esm_typeof = function (obj) {
-      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
-    };
-  }
-  return vue_class_component_esm_typeof(obj);
-}
-function vue_class_component_esm_defineProperty(obj, key, value) {
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
-}
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-    return arr2;
-  }
-}
-function _iterableToArray(iter) {
-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
-}
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
-}
-
-// The rational behind the verbose Reflect-feature check below is the fact that there are polyfills
-// which add an implementation for Reflect.defineMetadata but not for Reflect.getOwnMetadataKeys.
-// Without this check consumers will encounter hard to track down runtime errors.
-function reflectionIsSupported() {
-  return typeof Reflect !== 'undefined' && Reflect.defineMetadata && Reflect.getOwnMetadataKeys;
-}
-function copyReflectionMetadata(to, from) {
-  forwardMetadata(to, from);
-  Object.getOwnPropertyNames(from.prototype).forEach(function (key) {
-    forwardMetadata(to.prototype, from.prototype, key);
-  });
-  Object.getOwnPropertyNames(from).forEach(function (key) {
-    forwardMetadata(to, from, key);
-  });
-}
-function forwardMetadata(to, from, propertyKey) {
-  var metaKeys = propertyKey ? Reflect.getOwnMetadataKeys(from, propertyKey) : Reflect.getOwnMetadataKeys(from);
-  metaKeys.forEach(function (metaKey) {
-    var metadata = propertyKey ? Reflect.getOwnMetadata(metaKey, from, propertyKey) : Reflect.getOwnMetadata(metaKey, from);
-    if (propertyKey) {
-      Reflect.defineMetadata(metaKey, metadata, to, propertyKey);
-    } else {
-      Reflect.defineMetadata(metaKey, metadata, to);
-    }
-  });
-}
-var fakeArray = {
-  __proto__: []
-};
-var hasProto = fakeArray instanceof Array;
-function vue_class_component_esm_createDecorator(factory) {
-  return function (target, key, index) {
-    var Ctor = typeof target === 'function' ? target : target.constructor;
-    if (!Ctor.__decorators__) {
-      Ctor.__decorators__ = [];
-    }
-    if (typeof index !== 'number') {
-      index = undefined;
-    }
-    Ctor.__decorators__.push(function (options) {
-      return factory(options, key, index);
-    });
-  };
-}
-function mixins() {
-  for (var _len = arguments.length, Ctors = new Array(_len), _key = 0; _key < _len; _key++) {
-    Ctors[_key] = arguments[_key];
-  }
-  return Vue.extend({
-    mixins: Ctors
-  });
-}
-function isPrimitive(value) {
-  var type = vue_class_component_esm_typeof(value);
-  return value == null || type !== 'object' && type !== 'function';
-}
-function warn(message) {
-  if (typeof console !== 'undefined') {
-    console.warn('[vue-class-component] ' + message);
-  }
-}
-function collectDataFromConstructor(vm, Component) {
-  // override _init to prevent to init as Vue instance
-  var originalInit = Component.prototype._init;
-  Component.prototype._init = function () {
-    var _this = this;
-
-    // proxy to actual vm
-    var keys = Object.getOwnPropertyNames(vm); // 2.2.0 compat (props are no longer exposed as self properties)
-
-    if (vm.$options.props) {
-      for (var key in vm.$options.props) {
-        if (!vm.hasOwnProperty(key)) {
-          keys.push(key);
-        }
-      }
-    }
-    keys.forEach(function (key) {
-      Object.defineProperty(_this, key, {
-        get: function get() {
-          return vm[key];
-        },
-        set: function set(value) {
-          vm[key] = value;
-        },
-        configurable: true
-      });
-    });
-  }; // should be acquired class property values
-
-  var data = new Component(); // restore original _init to avoid memory leak (#209)
-
-  Component.prototype._init = originalInit; // create plain data object
-
-  var plainData = {};
-  Object.keys(data).forEach(function (key) {
-    if (data[key] !== undefined) {
-      plainData[key] = data[key];
-    }
-  });
-  if (false) {}
-  return plainData;
-}
-var $internalHooks = ['data', 'beforeCreate', 'created', 'beforeMount', 'mounted', 'beforeDestroy', 'destroyed', 'beforeUpdate', 'updated', 'activated', 'deactivated', 'render', 'errorCaptured', 'serverPrefetch' // 2.6
-];
-
-function componentFactory(Component) {
-  var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-  options.name = options.name || Component._componentTag || Component.name; // prototype props.
-
-  var proto = Component.prototype;
-  Object.getOwnPropertyNames(proto).forEach(function (key) {
-    if (key === 'constructor') {
-      return;
-    } // hooks
-
-    if ($internalHooks.indexOf(key) > -1) {
-      options[key] = proto[key];
-      return;
-    }
-    var descriptor = Object.getOwnPropertyDescriptor(proto, key);
-    if (descriptor.value !== void 0) {
-      // methods
-      if (typeof descriptor.value === 'function') {
-        (options.methods || (options.methods = {}))[key] = descriptor.value;
-      } else {
-        // typescript decorated data
-        (options.mixins || (options.mixins = [])).push({
-          data: function data() {
-            return vue_class_component_esm_defineProperty({}, key, descriptor.value);
-          }
-        });
-      }
-    } else if (descriptor.get || descriptor.set) {
-      // computed properties
-      (options.computed || (options.computed = {}))[key] = {
-        get: descriptor.get,
-        set: descriptor.set
-      };
-    }
-  });
-  (options.mixins || (options.mixins = [])).push({
-    data: function data() {
-      return collectDataFromConstructor(this, Component);
-    }
-  }); // decorate options
-
-  var decorators = Component.__decorators__;
-  if (decorators) {
-    decorators.forEach(function (fn) {
-      return fn(options);
-    });
-    delete Component.__decorators__;
-  } // find super
-
-  var superProto = Object.getPrototypeOf(Component.prototype);
-  var Super = superProto instanceof (external_commonjs_vue_commonjs2_vue_root_Vue_default()) ? superProto.constructor : (external_commonjs_vue_commonjs2_vue_root_Vue_default());
-  var Extended = Super.extend(options);
-  forwardStaticMembers(Extended, Component, Super);
-  if (reflectionIsSupported()) {
-    copyReflectionMetadata(Extended, Component);
-  }
-  return Extended;
-}
-var reservedPropertyNames = (/* unused pure expression or super */ null && ([
-// Unique id
-'cid',
-// Super Vue constructor
-'super',
-// Component options that will be used by the component
-'options', 'superOptions', 'extendOptions', 'sealedOptions',
-// Private assets
-'component', 'directive', 'filter']));
-var shouldIgnore = {
-  prototype: true,
-  arguments: true,
-  callee: true,
-  caller: true
-};
-function forwardStaticMembers(Extended, Original, Super) {
-  // We have to use getOwnPropertyNames since Babel registers methods as non-enumerable
-  Object.getOwnPropertyNames(Original).forEach(function (key) {
-    // Skip the properties that should not be overwritten
-    if (shouldIgnore[key]) {
-      return;
-    } // Some browsers does not allow reconfigure built-in properties
-
-    var extendedDescriptor = Object.getOwnPropertyDescriptor(Extended, key);
-    if (extendedDescriptor && !extendedDescriptor.configurable) {
-      return;
-    }
-    var descriptor = Object.getOwnPropertyDescriptor(Original, key); // If the user agent does not support `__proto__` or its family (IE <= 10),
-    // the sub class properties may be inherited properties from the super class in TypeScript.
-    // We need to exclude such properties to prevent to overwrite
-    // the component options object which stored on the extended constructor (See #192).
-    // If the value is a referenced value (object or function),
-    // we can check equality of them and exclude it if they have the same reference.
-    // If it is a primitive value, it will be forwarded for safety.
-
-    if (!hasProto) {
-      // Only `cid` is explicitly exluded from property forwarding
-      // because we cannot detect whether it is a inherited property or not
-      // on the no `__proto__` environment even though the property is reserved.
-      if (key === 'cid') {
-        return;
-      }
-      var superDescriptor = Object.getOwnPropertyDescriptor(Super, key);
-      if (!isPrimitive(descriptor.value) && superDescriptor && superDescriptor.value === descriptor.value) {
-        return;
-      }
-    } // Warn if the users manually declare reserved properties
-
-    if (false) {}
-    Object.defineProperty(Extended, key, descriptor);
-  });
-}
-function Component(options) {
-  if (typeof options === 'function') {
-    return componentFactory(options);
-  }
-  return function (Component) {
-    return componentFactory(Component, options);
-  };
-}
-Component.registerHooks = function registerHooks(keys) {
-  $internalHooks.push.apply($internalHooks, _toConsumableArray(keys));
-};
-/* harmony default export */ var vue_class_component_esm = (Component);
-
-// EXTERNAL MODULE: ./node_modules/core-js/modules/es.array.unshift.js
-var es_array_unshift = __webpack_require__(541);
-;// CONCATENATED MODULE: ./node_modules/vue-property-decorator/lib/decorators/Emit.js
-
-var __spreadArrays = undefined && undefined.__spreadArrays || function () {
-  for (var s = 0, i = 0, il = arguments.length; i < il; i++) s += arguments[i].length;
-  for (var r = Array(s), k = 0, i = 0; i < il; i++) for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++) r[k] = a[j];
-  return r;
-};
-// Code copied from Vue/src/shared/util.js
-var hyphenateRE = /\B([A-Z])/g;
-var hyphenate = function (str) {
-  return str.replace(hyphenateRE, '-$1').toLowerCase();
-};
-/**
- * decorator of an event-emitter function
- * @param  event The name of the event
- * @return MethodDecorator
- */
-function Emit(event) {
-  return function (_target, propertyKey, descriptor) {
-    var key = hyphenate(propertyKey);
-    var original = descriptor.value;
-    descriptor.value = function emitter() {
-      var _this = this;
-      var args = [];
-      for (var _i = 0; _i < arguments.length; _i++) {
-        args[_i] = arguments[_i];
-      }
-      var emit = function (returnValue) {
-        var emitName = event || key;
-        if (returnValue === undefined) {
-          if (args.length === 0) {
-            _this.$emit(emitName);
-          } else if (args.length === 1) {
-            _this.$emit(emitName, args[0]);
-          } else {
-            _this.$emit.apply(_this, __spreadArrays([emitName], args));
-          }
-        } else {
-          args.unshift(returnValue);
-          _this.$emit.apply(_this, __spreadArrays([emitName], args));
-        }
-      };
-      var returnValue = original.apply(this, args);
-      if (isPromise(returnValue)) {
-        returnValue.then(emit);
-      } else {
-        emit(returnValue);
-      }
-      return returnValue;
-    };
-  };
-}
-function isPromise(obj) {
-  return obj instanceof Promise || obj && typeof obj.then === 'function';
-}
-;// CONCATENATED MODULE: ./node_modules/vue-property-decorator/lib/helpers/metadata.js
-/** @see {@link https://github.com/vuejs/vue-class-component/blob/master/src/reflect.ts} */
-var reflectMetadataIsSupported = typeof Reflect !== 'undefined' && typeof Reflect.getMetadata !== 'undefined';
-function metadata_applyMetadata(options, target, key) {
-  if (reflectMetadataIsSupported) {
-    if (!Array.isArray(options) && typeof options !== 'function' && !options.hasOwnProperty('type') && typeof options.type === 'undefined') {
-      var type = Reflect.getMetadata('design:type', target, key);
-      if (type !== Object) {
-        options.type = type;
-      }
-    }
-  }
-}
-;// CONCATENATED MODULE: ./node_modules/vue-property-decorator/lib/decorators/Model.js
-
-
-/**
- * decorator of model
- * @param  event event name
- * @param options options
- * @return PropertyDecorator
- */
-function Model(event, options) {
-  if (options === void 0) {
-    options = {};
-  }
-  return function (target, key) {
-    metadata_applyMetadata(options, target, key);
-    vue_class_component_esm_createDecorator(function (componentOptions, k) {
-      ;
-      (componentOptions.props || (componentOptions.props = {}))[k] = options;
-      componentOptions.model = {
-        prop: k,
-        event: event || k
-      };
-    })(target, key);
-  };
-}
-;// CONCATENATED MODULE: ./node_modules/vue-property-decorator/lib/decorators/ModelSync.js
-
-
-/**
- * decorator of synced model and prop
- * @param propName the name to interface with from outside, must be different from decorated property
- * @param  event event name
- * @param options options
- * @return PropertyDecorator
- */
-function ModelSync(propName, event, options) {
-  if (options === void 0) {
-    options = {};
-  }
-  return function (target, key) {
-    applyMetadata(options, target, key);
-    createDecorator(function (componentOptions, k) {
-      ;
-      (componentOptions.props || (componentOptions.props = {}))[propName] = options;
-      componentOptions.model = {
-        prop: propName,
-        event: event || k
-      };
-      (componentOptions.computed || (componentOptions.computed = {}))[k] = {
-        get: function () {
-          return this[propName];
-        },
-        set: function (value) {
-          // @ts-ignore
-          this.$emit(event, value);
-        }
-      };
-    })(target, key);
-  };
-}
-;// CONCATENATED MODULE: ./node_modules/vue-property-decorator/lib/decorators/Prop.js
-
-
-/**
- * decorator of a prop
- * @param  options the options for the prop
- * @return PropertyDecorator | void
- */
-function Prop(options) {
-  if (options === void 0) {
-    options = {};
-  }
-  return function (target, key) {
-    metadata_applyMetadata(options, target, key);
-    vue_class_component_esm_createDecorator(function (componentOptions, k) {
-      ;
-      (componentOptions.props || (componentOptions.props = {}))[k] = options;
-    })(target, key);
-  };
-}
-;// CONCATENATED MODULE: ./node_modules/vue-property-decorator/lib/decorators/PropSync.js
-
-
-/**
- * decorator of a synced prop
- * @param propName the name to interface with from outside, must be different from decorated property
- * @param options the options for the synced prop
- * @return PropertyDecorator | void
- */
-function PropSync(propName, options) {
-  if (options === void 0) {
-    options = {};
-  }
-  return function (target, key) {
-    applyMetadata(options, target, key);
-    createDecorator(function (componentOptions, k) {
-      ;
-      (componentOptions.props || (componentOptions.props = {}))[propName] = options;
-      (componentOptions.computed || (componentOptions.computed = {}))[k] = {
-        get: function () {
-          return this[propName];
-        },
-        set: function (value) {
-          this.$emit("update:" + propName, value);
-        }
-      };
-    })(target, key);
-  };
-}
-;// CONCATENATED MODULE: ./node_modules/vue-property-decorator/lib/decorators/Watch.js
-
-
-/**
- * decorator of a watch function
- * @param  path the path or the expression to observe
- * @param  WatchOption
- * @return MethodDecorator
- */
-function Watch(path, options) {
-  if (options === void 0) {
-    options = {};
-  }
-  var _a = options.deep,
-    deep = _a === void 0 ? false : _a,
-    _b = options.immediate,
-    immediate = _b === void 0 ? false : _b;
-  return vue_class_component_esm_createDecorator(function (componentOptions, handler) {
-    if (typeof componentOptions.watch !== 'object') {
-      componentOptions.watch = Object.create(null);
-    }
-    var watch = componentOptions.watch;
-    if (typeof watch[path] === 'object' && !Array.isArray(watch[path])) {
-      watch[path] = [watch[path]];
-    } else if (typeof watch[path] === 'undefined') {
-      watch[path] = [];
-    }
-    watch[path].push({
-      handler: handler,
-      deep: deep,
-      immediate: immediate
-    });
-  });
-}
-;// CONCATENATED MODULE: ./node_modules/vue-property-decorator/lib/index.js
-/** vue-property-decorator verson 9.1.2 MIT LICENSE copyright 2020 kaorun343 */
-/// <reference types='reflect-metadata'/>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // EXTERNAL MODULE: ./node_modules/element-ui/lib/element-ui.common.js
 var element_ui_common = __webpack_require__(7356);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/formItemGroup.vue?vue&type=script&lang=ts&
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/formItemGroup.vue?vue&type=script&lang=js&
 
-var __decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-  var c = arguments.length,
-    r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-    d;
-  if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-  return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-let FormGroup = /** 搜索类 */
-class FormGroup extends (external_commonjs_vue_commonjs2_vue_root_Vue_default()) {
-  constructor(...args) {
-    super(...args);
-    _defineProperty(this, "formConfig", void 0);
-    _defineProperty(this, "syncResetFormData", void 0);
-    // 表格配置项
-    _defineProperty(this, "formList", []);
-    // 表单数据
-    _defineProperty(this, "formData", {});
-    // 语言
-    _defineProperty(this, "language", "CN");
-    // 日期设置
-    _defineProperty(this, "shortcutsDate", {
-      shortcuts: [{
-        text: this.$t("threeDay"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date(Date.now() - 3 * 86400000);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("oneWeek"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date(Date.now() - 7 * 86400000);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("fixteenDay"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date(Date.now() - 15 * 86400000);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("oneMonth"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date();
-          start.setMonth(start.getMonth() - 1);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("threeMonth"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date();
-          start.setMonth(start.getMonth() - 3);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("sixMonth"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date();
-          start.setMonth(start.getMonth() - 6);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("oneYear"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date();
-          start.setFullYear(start.getFullYear() - 1);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("twoYear"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date();
-          start.setFullYear(start.getFullYear() - 2);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("threeYear"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date();
-          start.setFullYear(start.getFullYear() - 2);
-          picker.$emit("pick", [start, end]);
-        }
-      }]
-    });
-    // 时间设置
-    _defineProperty(this, "shortcutsTime", {
-      shortcuts: [{
-        text: this.$t("currentDay"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date(Date.now() - 1 * 86400000);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("threeDay"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date(Date.now() - 3 * 86400000);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("oneWeek"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date(Date.now() - 7 * 86400000);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("oneMonth"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date();
-          start.setMonth(start.getMonth() - 1);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("threeMonth"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date();
-          start.setMonth(start.getMonth() - 3);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("sixMonth"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date();
-          start.setMonth(start.getMonth() - 6);
-          picker.$emit("pick", [start, end]);
-        }
-      }, {
-        text: this.$t("oneYear"),
-        onClick: picker => {
-          const end = new Date();
-          const start = new Date();
-          start.setFullYear(start.getFullYear() - 1);
-          picker.$emit("pick", [start, end]);
-        }
-      }]
-    });
-    // 必填项
-    _defineProperty(this, "requireKey", {});
-    // 记录多选时已经选中的列表
-    _defineProperty(this, "recordSelectedList", {});
-  }
+/* harmony default export */ var formItemGroupvue_type_script_lang_js_ = ({
+  name: "FormGroup",
+  components: {
+    "el-row": element_ui_common.Row,
+    "el-col": element_ui_common.Col,
+    "el-input": element_ui_common.Input,
+    "el-select": element_ui_common.Select,
+    "el-date-picker": element_ui_common.DatePicker,
+    "el-option": element_ui_common.Option,
+    "el-radio": element_ui_common.Radio,
+    "el-radio-group": element_ui_common.RadioGroup,
+    "el-checkbox": element_ui_common.Checkbox,
+    "el-checkbox-group": element_ui_common.CheckboxGroup
+  },
+  props: {
+    formConfig: {
+      type: Array,
+      default: () => []
+    },
+    syncResetFormData: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  data() {
+    return {
+      // 表格配置项
+      formList: [],
+      // 表单数据
+      formData: {},
+      // 语言
+      language: this.$lang,
+      // 必填项
+      requireKey: {},
+      // 记录多选时已经选中的列表
+      recordSelectedList: {},
+      // 日期设置
+      shortcutsDate: {
+        shortcuts: [{
+          text: this.$t("threeDay"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date(Date.now() - 3 * 86400000);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("oneWeek"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date(Date.now() - 7 * 86400000);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("fixteenDay"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date(Date.now() - 15 * 86400000);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("oneMonth"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date();
+            start.setMonth(start.getMonth() - 1);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("threeMonth"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date();
+            start.setMonth(start.getMonth() - 3);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("sixMonth"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date();
+            start.setMonth(start.getMonth() - 6);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("oneYear"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date();
+            start.setFullYear(start.getFullYear() - 1);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("twoYear"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date();
+            start.setFullYear(start.getFullYear() - 2);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("threeYear"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date();
+            start.setFullYear(start.getFullYear() - 2);
+            picker.$emit("pick", [start, end]);
+          }
+        }]
+      },
+      // 时间设置
+      shortcutsTime: {
+        shortcuts: [{
+          text: this.$t("currentDay"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date(Date.now() - 1 * 86400000);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("threeDay"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date(Date.now() - 3 * 86400000);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("oneWeek"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date(Date.now() - 7 * 86400000);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("oneMonth"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date();
+            start.setMonth(start.getMonth() - 1);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("threeMonth"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date();
+            start.setMonth(start.getMonth() - 3);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("sixMonth"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date();
+            start.setMonth(start.getMonth() - 6);
+            picker.$emit("pick", [start, end]);
+          }
+        }, {
+          text: this.$t("oneYear"),
+          onClick: picker => {
+            const end = new Date();
+            const start = new Date();
+            start.setFullYear(start.getFullYear() - 1);
+            picker.$emit("pick", [start, end]);
+          }
+        }]
+      }
+    };
+  },
   /** created */
   created() {
-    console.log(this);
-    const language = "zh";
-    this.language = language;
+    this.language = this.$lang;
     this.formList = this.formConfig.map(item => {
-      item.span = language === "EN" && item.span && item.span < 8 ? 8 : item.span;
-      item.labelWidth = item.labelWidth || item.labelWidth === 0 ? `0 0 ${item.labelWidth}px` : language === "EN" ? "0 0 170px" : "0 0 120px";
+      item.span = this.language === "EN" && item.span && item.span < 8 ? 8 : item.span;
+      item.labelWidth = item.labelWidth || item.labelWidth === 0 ? `0 0 ${item.labelWidth}px` : this.language === "EN" ? "0 0 170px" : "0 0 120px";
       item.onChange = item.onChange || this.defaultFunction;
       item.onBlur = item.onBlur || this.defaultFunction;
       item.onFocus = item.onFocus || this.defaultFunction;
@@ -36716,8 +36165,7 @@ class FormGroup extends (external_commonjs_vue_commonjs2_vue_root_Vue_default())
         this.$set(this.formData, cur.key, cur.value || "");
       }
     });
-  }
-  /** mounted */
+  },
   async mounted() {
     const arr = [...this.formList];
     for (let i in arr) {
@@ -36729,163 +36177,150 @@ class FormGroup extends (external_commonjs_vue_commonjs2_vue_root_Vue_default())
       }
     }
     this.formList = arr;
-  }
-  /** 默认函数  */
-  defaultFunction() {
-    return "no event";
-  }
-  /**
-   * 记录选中的options
-   */
-  recordSelectedOptions(item) {
-    const arr = item.options.filter(cur => this.formData[item.key].includes(cur.value));
-    const originItemKeyArray = this.recordSelectedList[item.key] ? this.recordSelectedList[item.key] : [];
-    const deleteFullArrayString = [...new Set(Array.from([...originItemKeyArray, ...arr], cur => JSON.stringify(cur)))];
-    const deleteFullArray = Array.from(deleteFullArrayString, cur => JSON.parse(cur));
-    this.recordSelectedList = {
-      [item.key]: deleteFullArray
-    };
-  }
-  /** 调配置项item event */
-  itemEvent(item, eventType, config) {
-    item[eventType](config, this);
-  }
-  /** 获取查询时的参数 */
-  getBtnClickArguments(type) {
-    return {
-      type,
-      data: this.getFormData()
-    };
-  }
-  /** 搜索  */
-  search() {
-    const data = this.getBtnClickArguments("search");
-    const requireDataIsok = Object.keys(this.requireKey).every(item => {
-      return data.data[item] || data.data[item] === 0;
-    });
-    // 初始化
-    this.formList = this.formList.map(item => {
-      if (item.require) {
-        item.emptyValueAnimate = false;
+  },
+  methods: {
+    /** 默认函数  */
+    defaultFunction() {
+      return "no event";
+    },
+    /**
+     * 记录选中的options
+     */
+    recordSelectedOptions(item) {
+      const arr = item.options.filter(cur => this.formData[item.key].includes(cur.value));
+      const originItemKeyArray = this.recordSelectedList[item.key] ? this.recordSelectedList[item.key] : [];
+      const deleteFullArrayString = [...new Set(Array.from([...originItemKeyArray, ...arr], cur => JSON.stringify(cur)))];
+      const deleteFullArray = Array.from(deleteFullArrayString, cur => JSON.parse(cur));
+      this.recordSelectedList = {
+        [item.key]: deleteFullArray
+      };
+    },
+    /**
+     * @param { any } item
+     * @param { "onChange" | "onBlur" | "onFocus" } eventType
+     * @param { any } config
+     * 调配置项item event
+     *  */
+    itemEvent(item, eventType, config) {
+      item[eventType](config, this);
+    },
+    /**
+     * @param { "search" | "reset" } type
+     * 获取查询时的参数
+     * */
+    getBtnClickArguments(type) {
+      return {
+        type,
+        data: this.getFormData()
+      };
+    },
+    /** 搜索  */
+    search() {
+      const data = this.getBtnClickArguments("search");
+      const requireDataIsok = Object.keys(this.requireKey).every(item => {
+        return data.data[item] || data.data[item] === 0;
+      });
+      // 初始化
+      this.formList = this.formList.map(item => {
+        if (item.require) {
+          item.emptyValueAnimate = false;
+        }
+        return item;
+      });
+      if (!requireDataIsok) {
+        // 增加红色必填提示
+        setTimeout(() => {
+          this.formList = [...this.formList].map(item => {
+            const value = data.data[item.key];
+            if (item.require && !value && value !== 0) {
+              item.emptyValueAnimate = true;
+            } else if (item.require) {
+              item.emptyValueAnimate = false;
+            }
+            return item;
+          });
+        }, 0);
+        return;
       }
-      return item;
-    });
-    if (!requireDataIsok) {
-      // 增加红色必填提示
-      setTimeout(() => {
-        this.formList = [...this.formList].map(item => {
-          const value = data.data[item.key];
-          if (item.require && !value && value !== 0) {
-            item.emptyValueAnimate = true;
-          } else if (item.require) {
-            item.emptyValueAnimate = false;
+      this.$emit("getFormData", data);
+      this.$bus.$emit("clearTableTr");
+      return data;
+    },
+    /** 重置 */
+    reset() {
+      this.formList = this.formList.map(item => {
+        item.value = "";
+        if (item.require) {
+          item.emptyValueAnimate = false;
+        }
+        return item;
+      });
+      for (let key in this.formData) {
+        this.formData[key] = "";
+      }
+      const data = this.getBtnClickArguments("reset");
+      const requireDataIsok = Object.keys(this.requireKey).every(item => {
+        return data.data[item] || data.data[item] === 0;
+      });
+      if (!requireDataIsok) {
+        return;
+      }
+      this.$emit("getFormData", data);
+      this.$bus.$emit("clearTableTr");
+      return data;
+    },
+    // 获取参数数据
+    getFormData() {
+      let data = {
+        ...this.formData
+      };
+      const obj = {};
+      for (let i in data) {
+        const cur = data[i];
+        if (Array.isArray(cur)) {
+          obj[i] = cur.join(",");
+        } else {
+          obj[i] = cur;
+        }
+      }
+      // 处理数据
+      return obj;
+    }
+  },
+  watch: {
+    'formData': {
+      handler(newVal) {
+        this.$emit("watchFormData", newVal);
+      },
+      deep: true,
+      immediate: true
+    },
+    'syncResetFormData': {
+      handler(newVal) {
+        if (newVal.constructor !== Object) {
+          throw "重置formItemGroup.vue子组件搜索框内容时，只能传入一个对象";
+        }
+        const opt = {};
+        for (let i in newVal) {
+          if (this.formData.hasOwnProperty(i)) {
+            opt[i] = newVal[i];
           }
-          return item;
-        });
-      }, 0);
-      return;
+        }
+        this.formData = {
+          ...this.formData,
+          ...opt
+        };
+      },
+      deep: true
     }
-    this.$emit("getFormData", data);
-    this.$bus.$emit("clearTableTr");
-    return data;
   }
-  /** 重置 */
-  reset() {
-    this.formList = this.formList.map(item => {
-      item.value = "";
-      if (item.require) {
-        item.emptyValueAnimate = false;
-      }
-      return item;
-    });
-    for (let key in this.formData) {
-      this.formData[key] = "";
-    }
-    const data = this.getBtnClickArguments("reset");
-    const requireDataIsok = Object.keys(this.requireKey).every(item => {
-      return data.data[item] || data.data[item] === 0;
-    });
-    if (!requireDataIsok) {
-      return;
-    }
-    this.$emit("getFormData", data);
-    this.$bus.$emit("clearTableTr");
-    return data;
-  }
-  // 获取参数数据
-  getFormData() {
-    let data = {
-      ...this.formData
-    };
-    const obj = {};
-    for (let i in data) {
-      const cur = data[i];
-      if (Array.isArray(cur)) {
-        obj[i] = cur.join(",");
-      } else {
-        obj[i] = cur;
-      }
-    }
-    // 处理数据
-    return obj;
-  }
-  /** 实时监听上传父组件当前搜索条件 */
-  getCurrentFormData(newVal) {
-    this.$emit("watchFormData", newVal);
-  }
-  /** 监听父组件传入的绑定值，用于重置搜索框内容 */
-  resetFormDataChange(newVal) {
-    if (newVal.constructor !== Object) {
-      throw "重置formItemGroup.vue子组件搜索框内容时，只能传入一个对象";
-    }
-    const opt = {};
-    for (let i in newVal) {
-      if (this.formData.hasOwnProperty(i)) {
-        opt[i] = newVal[i];
-      }
-    }
-    this.formData = {
-      ...this.formData,
-      ...opt
-    };
-  }
-};
-__decorate([Prop({
-  default: []
-})], FormGroup.prototype, "formConfig", void 0);
-__decorate([Prop({
-  default: () => {}
-})], FormGroup.prototype, "syncResetFormData", void 0);
-__decorate([Watch("formData", {
-  deep: true,
-  immediate: true
-})], FormGroup.prototype, "getCurrentFormData", null);
-__decorate([Watch("syncResetFormData", {
-  deep: true
-})], FormGroup.prototype, "resetFormDataChange", null);
-FormGroup = __decorate([vue_class_component_esm({
-  name: "FormGroup",
-  components: {
-    "el-row": element_ui_common.Row,
-    "el-col": element_ui_common.Col,
-    "el-input": element_ui_common.Input,
-    "el-select": element_ui_common.Select,
-    "el-date-picker": element_ui_common.DatePicker,
-    "el-option": element_ui_common.Option,
-    "el-radio": element_ui_common.Radio,
-    "el-radio-group": element_ui_common.RadioGroup,
-    "el-checkbox": element_ui_common.Checkbox,
-    "el-checkbox-group": element_ui_common.CheckboxGroup
-  }
-})
-/** 搜索类 */], FormGroup);
-/* harmony default export */ var formItemGroupvue_type_script_lang_ts_ = (FormGroup);
-;// CONCATENATED MODULE: ./src/components/formItemGroup.vue?vue&type=script&lang=ts&
- /* harmony default export */ var components_formItemGroupvue_type_script_lang_ts_ = (formItemGroupvue_type_script_lang_ts_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-77.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-77.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-77.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-77.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/formItemGroup.vue?vue&type=style&index=0&id=35beeb39&prod&lang=less&
+});
+;// CONCATENATED MODULE: ./src/components/formItemGroup.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_formItemGroupvue_type_script_lang_js_ = (formItemGroupvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-77.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-77.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-77.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-77.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/formItemGroup.vue?vue&type=style&index=0&id=529d9826&prod&lang=less&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/formItemGroup.vue?vue&type=style&index=0&id=35beeb39&prod&lang=less&
+;// CONCATENATED MODULE: ./src/components/formItemGroup.vue?vue&type=style&index=0&id=529d9826&prod&lang=less&
 
 ;// CONCATENATED MODULE: ./node_modules/@vue/vue-loader-v15/lib/runtime/componentNormalizer.js
 /* globals __VUE_SSR_CONTEXT__ */
@@ -36995,7 +36430,7 @@ function normalizeComponent(
 /* normalize component */
 
 var component = normalizeComponent(
-  components_formItemGroupvue_type_script_lang_ts_,
+  components_formItemGroupvue_type_script_lang_js_,
   render,
   staticRenderFns,
   false,
@@ -37006,11 +36441,10 @@ var component = normalizeComponent(
 )
 
 /* harmony default export */ var formItemGroup = (component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/InputMoney.vue?vue&type=template&id=6c67d608&
-var InputMoneyvue_type_template_id_6c67d608_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/InputMoney.vue?vue&type=template&id=3c5e04a6&
+var InputMoneyvue_type_template_id_3c5e04a6_render = function render() {
   var _vm = this,
-    _c = _vm._self._c,
-    _setup = _vm._self._setupProxy;
+    _c = _vm._self._c;
   return _c('el-input', _vm._b({
     staticStyle: {
       "width": "100%"
@@ -37028,63 +36462,57 @@ var InputMoneyvue_type_template_id_6c67d608_render = function render() {
     }
   }, 'el-input', _vm.$attrs, false));
 };
-var InputMoneyvue_type_template_id_6c67d608_staticRenderFns = [];
+var InputMoneyvue_type_template_id_3c5e04a6_staticRenderFns = [];
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/InputMoney.vue?vue&type=script&lang=ts&
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/InputMoney.vue?vue&type=script&lang=js&
 
-var InputMoneyvue_type_script_lang_ts_decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-  var c = arguments.length,
-    r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-    d;
-  if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-  return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-let MoneyInput = class MoneyInput extends (external_commonjs_vue_commonjs2_vue_root_Vue_default()) {
-  constructor(...args) {
-    super(...args);
-    _defineProperty(this, "val", void 0);
-    _defineProperty(this, "text", "");
-  }
-  valChange(newVal) {
-    if (typeof newVal === 'string') {
-      newVal = newVal.replace(/\,/g, "");
-    }
-    this.text = ["string", "number"].includes(typeof newVal) && newVal || newVal === 0 ? Number(newVal).toLocaleString() : "";
-  }
-  /** 获取焦点 */
-  inputFous() {
-    this.text = (this.text || "").replace(/\,/g, "");
-  }
-  /** 失去焦点 */
-  inputBlur() {
-    const reg = /^\-?\d+(\.\d{1,2})?$/;
-    const value = this.text;
-    if (reg.test(value)) {
-      this.text = Number(value).toLocaleString();
-      // this.$emit("blurData", Number(value).toLocaleString());
-      this.$emit("blurData", Number(value));
-    } else {
-      this.text = '';
-      this.$emit("blurData", '');
-    }
-  }
-};
-InputMoneyvue_type_script_lang_ts_decorate([Model("blurData")], MoneyInput.prototype, "val", void 0);
-InputMoneyvue_type_script_lang_ts_decorate([Watch("val", {
-  immediate: true
-})], MoneyInput.prototype, "valChange", null);
-MoneyInput = InputMoneyvue_type_script_lang_ts_decorate([vue_class_component_esm({
-  name: 'MoneyInput',
+/* harmony default export */ var InputMoneyvue_type_script_lang_js_ = ({
+  name: "MoneyInput",
   components: {
     "el-input": element_ui_common.Input
+  },
+  model: {
+    prop: "val",
+    event: "blurData"
+  },
+  data() {
+    return {
+      text: ""
+    };
+  },
+  methods: {
+    /** 获取焦点 */
+    inputFous() {
+      this.text = (this.text || "").replace(/\,/g, "");
+    },
+    /** 失去焦点 */
+    inputBlur() {
+      const reg = /^\-?\d+(\.\d{1,2})?$/;
+      const value = this.text;
+      if (reg.test(value)) {
+        this.text = Number(value).toLocaleString();
+        // this.$emit("blurData", Number(value).toLocaleString());
+        this.$emit("blurData", Number(value));
+      } else {
+        this.text = "";
+        this.$emit("blurData", "");
+      }
+    }
+  },
+  watch: {
+    val: {
+      handler(newVal) {
+        if (typeof newVal === "string") {
+          newVal = newVal.replace(/\,/g, "");
+        }
+        this.text = ["string", "number"].includes(typeof newVal) && newVal || newVal === 0 ? Number(newVal).toLocaleString() : "";
+      },
+      immediate: true
+    }
   }
-})], MoneyInput);
-/* harmony default export */ var InputMoneyvue_type_script_lang_ts_ = (MoneyInput);
-;// CONCATENATED MODULE: ./src/components/InputMoney.vue?vue&type=script&lang=ts&
- /* harmony default export */ var components_InputMoneyvue_type_script_lang_ts_ = (InputMoneyvue_type_script_lang_ts_); 
+});
+;// CONCATENATED MODULE: ./src/components/InputMoney.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_InputMoneyvue_type_script_lang_js_ = (InputMoneyvue_type_script_lang_js_); 
 ;// CONCATENATED MODULE: ./src/components/InputMoney.vue
 
 
@@ -37094,9 +36522,9 @@ MoneyInput = InputMoneyvue_type_script_lang_ts_decorate([vue_class_component_esm
 /* normalize component */
 ;
 var InputMoney_component = normalizeComponent(
-  components_InputMoneyvue_type_script_lang_ts_,
-  InputMoneyvue_type_template_id_6c67d608_render,
-  InputMoneyvue_type_template_id_6c67d608_staticRenderFns,
+  components_InputMoneyvue_type_script_lang_js_,
+  InputMoneyvue_type_template_id_3c5e04a6_render,
+  InputMoneyvue_type_template_id_3c5e04a6_staticRenderFns,
   false,
   null,
   null,
@@ -37105,11 +36533,10 @@ var InputMoney_component = normalizeComponent(
 )
 
 /* harmony default export */ var InputMoney = (InputMoney_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/remoteMethodSelect.vue?vue&type=template&id=da145106&
-var remoteMethodSelectvue_type_template_id_da145106_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/remoteMethodSelect.vue?vue&type=template&id=198e693b&
+var remoteMethodSelectvue_type_template_id_198e693b_render = function render() {
   var _vm = this,
-    _c = _vm._self._c,
-    _setup = _vm._self._setupProxy;
+    _c = _vm._self._c;
   return _c('Select', {
     staticStyle: {
       "width": "100%"
@@ -37145,92 +36572,87 @@ var remoteMethodSelectvue_type_template_id_da145106_render = function render() {
     });
   }), 1);
 };
-var remoteMethodSelectvue_type_template_id_da145106_staticRenderFns = [];
+var remoteMethodSelectvue_type_template_id_198e693b_staticRenderFns = [];
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/remoteMethodSelect.vue?vue&type=script&lang=ts&
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/remoteMethodSelect.vue?vue&type=script&lang=js&
 
-var remoteMethodSelectvue_type_script_lang_ts_decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-  var c = arguments.length,
-    r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-    d;
-  if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-  return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-let RemoteMethodSelect = class RemoteMethodSelect extends (external_commonjs_vue_commonjs2_vue_root_Vue_default()) {
-  constructor(...args) {
-    super(...args);
-    _defineProperty(this, "modelValue", {});
-    _defineProperty(this, "loading", false);
-    _defineProperty(this, "options", []);
-    _defineProperty(this, "loadApi", void 0);
-    _defineProperty(this, "queryKey", void 0);
-    _defineProperty(this, "value", void 0);
-    _defineProperty(this, "disabled", void 0);
-  }
-  valueInit(newValue, oldValue) {
-    if (newValue && newValue !== this.modelValue) {
-      this.modelValue = newValue;
-      this.getOptions();
-    }
-  }
-  /** 初始时获取默认列表 */
-  async getOptions() {
-    const data = (await this.loadApi({
-      [this.queryKey]: this.modelValue
-    })) || [];
-    this.options = data;
-    this.$emit("getFullData", this.options, this.modelValue);
-  }
-  /**
-   *  远程搜索
-   */
-  async remoteMethod(value) {
-    if (!value.trim()) {
-      return;
-    }
-    const query = {
-      [this.queryKey]: value
-    };
-    this.loading = true;
-    const data = (await this.loadApi(query)) || [];
-    this.options = data;
-    this.loading = false;
-  }
-  /**
-   * 选择数据
-   */
-  selectChange(data) {
-    // const rows = this.options.find((item: any) => item.value === data);
-    this.$emit("input", data);
-    this.$emit("getFullData", this.options, data);
-  }
-};
-remoteMethodSelectvue_type_script_lang_ts_decorate([Prop({
-  required: true
-})], RemoteMethodSelect.prototype, "loadApi", void 0);
-remoteMethodSelectvue_type_script_lang_ts_decorate([Prop({
-  default: "ouParam"
-})], RemoteMethodSelect.prototype, "queryKey", void 0);
-remoteMethodSelectvue_type_script_lang_ts_decorate([Prop({})], RemoteMethodSelect.prototype, "value", void 0);
-remoteMethodSelectvue_type_script_lang_ts_decorate([Prop({
-  default: false
-})], RemoteMethodSelect.prototype, "disabled", void 0);
-remoteMethodSelectvue_type_script_lang_ts_decorate([Watch("value", {
-  immediate: true
-})], RemoteMethodSelect.prototype, "valueInit", null);
-RemoteMethodSelect = remoteMethodSelectvue_type_script_lang_ts_decorate([vue_class_component_esm({
-  name: 'RemoteMethodSelect',
+/* harmony default export */ var remoteMethodSelectvue_type_script_lang_js_ = ({
+  name: "RemoteMethodSelect",
   components: {
     Select: element_ui_common.Select,
     Option: element_ui_common.Option
+  },
+  props: {
+    loadApi: {
+      type: Function,
+      require: true
+    },
+    queryKey: {
+      type: String,
+      default: "ouParam"
+    },
+    value: {
+      type: String
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      modelValue: {},
+      loading: false,
+      options: []
+    };
+  },
+  methods: {
+    /** 初始时获取默认列表 */
+    async getOptions() {
+      const data = (await this.loadApi({
+        [this.queryKey]: this.modelValue
+      })) || [];
+      this.options = data;
+      this.$emit("getFullData", this.options, this.modelValue);
+    },
+    /**
+     *  远程搜索
+     */
+    async remoteMethod(value) {
+      if (!value.trim()) {
+        return;
+      }
+      const query = {
+        [this.queryKey]: value
+      };
+      this.loading = true;
+      const data = (await this.loadApi(query)) || [];
+      this.options = data;
+      this.loading = false;
+    },
+    /**
+     * 选择数据
+     */
+    selectChange(data) {
+      // const rows = this.options.find((item: any) => item.value === data);
+      this.$emit("input", data);
+      this.$emit("getFullData", this.options, data);
+    }
+  },
+  watch: {
+    value: {
+      handler(newValue) {
+        if (newValue && newValue !== this.modelValue) {
+          this.modelValue = newValue;
+          this.getOptions();
+        }
+      },
+      immediate: true
+    }
   }
-})], RemoteMethodSelect);
-/* harmony default export */ var remoteMethodSelectvue_type_script_lang_ts_ = (RemoteMethodSelect);
-;// CONCATENATED MODULE: ./src/components/remoteMethodSelect.vue?vue&type=script&lang=ts&
- /* harmony default export */ var components_remoteMethodSelectvue_type_script_lang_ts_ = (remoteMethodSelectvue_type_script_lang_ts_); 
+});
+;// CONCATENATED MODULE: ./src/components/remoteMethodSelect.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_remoteMethodSelectvue_type_script_lang_js_ = (remoteMethodSelectvue_type_script_lang_js_); 
 ;// CONCATENATED MODULE: ./src/components/remoteMethodSelect.vue
 
 
@@ -37240,9 +36662,9 @@ RemoteMethodSelect = remoteMethodSelectvue_type_script_lang_ts_decorate([vue_cla
 /* normalize component */
 ;
 var remoteMethodSelect_component = normalizeComponent(
-  components_remoteMethodSelectvue_type_script_lang_ts_,
-  remoteMethodSelectvue_type_template_id_da145106_render,
-  remoteMethodSelectvue_type_template_id_da145106_staticRenderFns,
+  components_remoteMethodSelectvue_type_script_lang_js_,
+  remoteMethodSelectvue_type_template_id_198e693b_render,
+  remoteMethodSelectvue_type_template_id_198e693b_staticRenderFns,
   false,
   null,
   null,
@@ -37251,11 +36673,10 @@ var remoteMethodSelect_component = normalizeComponent(
 )
 
 /* harmony default export */ var remoteMethodSelect = (remoteMethodSelect_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table-title.vue?vue&type=template&id=3d5771b4&
-var table_titlevue_type_template_id_3d5771b4_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table-title.vue?vue&type=template&id=5dbb2489&
+var table_titlevue_type_template_id_5dbb2489_render = function render() {
   var _vm = this,
-    _c = _vm._self._c,
-    _setup = _vm._self._setupProxy;
+    _c = _vm._self._c;
   return _c('section', {
     staticClass: "table-title"
   }, [_c('h3', {
@@ -37269,42 +36690,28 @@ var table_titlevue_type_template_id_3d5771b4_render = function render() {
     }
   }), _vm._v(_vm._s(_vm.title || _vm.$t('search')) + " ")])]);
 };
-var table_titlevue_type_template_id_3d5771b4_staticRenderFns = [];
+var table_titlevue_type_template_id_5dbb2489_staticRenderFns = [];
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table-title.vue?vue&type=script&lang=ts&
-
-var table_titlevue_type_script_lang_ts_decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-  var c = arguments.length,
-    r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-    d;
-  if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-  return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-let TableTitle = class TableTitle extends (external_commonjs_vue_commonjs2_vue_root_Vue_default()) {
-  constructor(...args) {
-    super(...args);
-    _defineProperty(this, "title", void 0);
-    _defineProperty(this, "themeColor", void 0);
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table-title.vue?vue&type=script&lang=js&
+/* harmony default export */ var table_titlevue_type_script_lang_js_ = ({
+  name: 'TableTitle',
+  props: {
+    title: {
+      type: String,
+      default: ''
+    },
+    themeColor: {
+      type: String,
+      default: "#2c75ec"
+    }
   }
-};
-table_titlevue_type_script_lang_ts_decorate([Prop({
-  default: ""
-})], TableTitle.prototype, "title", void 0);
-table_titlevue_type_script_lang_ts_decorate([Prop({
-  default: "#2c75ec"
-})], TableTitle.prototype, "themeColor", void 0);
-TableTitle = table_titlevue_type_script_lang_ts_decorate([vue_class_component_esm({
-  name: 'TableTitle'
-})], TableTitle);
-/* harmony default export */ var table_titlevue_type_script_lang_ts_ = (TableTitle);
-;// CONCATENATED MODULE: ./src/components/table-title.vue?vue&type=script&lang=ts&
- /* harmony default export */ var components_table_titlevue_type_script_lang_ts_ = (table_titlevue_type_script_lang_ts_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-77.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-77.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-77.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-77.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table-title.vue?vue&type=style&index=0&id=3d5771b4&prod&lang=less&
+});
+;// CONCATENATED MODULE: ./src/components/table-title.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_table_titlevue_type_script_lang_js_ = (table_titlevue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-77.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-77.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-77.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-77.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table-title.vue?vue&type=style&index=0&id=5dbb2489&prod&lang=less&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/table-title.vue?vue&type=style&index=0&id=3d5771b4&prod&lang=less&
+;// CONCATENATED MODULE: ./src/components/table-title.vue?vue&type=style&index=0&id=5dbb2489&prod&lang=less&
 
 ;// CONCATENATED MODULE: ./src/components/table-title.vue
 
@@ -37316,9 +36723,9 @@ TableTitle = table_titlevue_type_script_lang_ts_decorate([vue_class_component_es
 /* normalize component */
 
 var table_title_component = normalizeComponent(
-  components_table_titlevue_type_script_lang_ts_,
-  table_titlevue_type_template_id_3d5771b4_render,
-  table_titlevue_type_template_id_3d5771b4_staticRenderFns,
+  components_table_titlevue_type_script_lang_js_,
+  table_titlevue_type_template_id_5dbb2489_render,
+  table_titlevue_type_template_id_5dbb2489_staticRenderFns,
   false,
   null,
   null,
@@ -37327,11 +36734,10 @@ var table_title_component = normalizeComponent(
 )
 
 /* harmony default export */ var table_title = (table_title_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=template&id=df814922&scoped=true&
-var tablevue_type_template_id_df814922_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=template&id=18261b62&scoped=true&
+var tablevue_type_template_id_18261b62_scoped_true_render = function render() {
   var _vm = this,
-    _c = _vm._self._c,
-    _setup = _vm._self._setupProxy;
+    _c = _vm._self._c;
   return _c('section', {
     staticClass: "table-components"
   }, [_vm.$scopedSlots['batchHandle'] ? _c('div', {
@@ -37379,30 +36785,32 @@ var tablevue_type_template_id_df814922_scoped_true_render = function render() {
       "type": "index",
       "label": _vm.$t('SerialNo'),
       "index": _vm.tableGlobalConfig.indexMethod,
-      "width": "80"
+      "width": _vm.tableGlobalConfig.indexWidth || 80
     }
-  }) : _vm._e(), _c('el-table-column', {
-    key: _vm.index,
-    attrs: {
-      "label": _vm.item.title,
-      "width": _vm.item.width || 'auto',
-      "fixed": _vm.item.fixed || false,
-      "sortable": _vm.item.sortable || false,
-      "show-overflow-tooltip": _vm.item.key !== 'handle'
-    },
-    scopedSlots: _vm._u([{
-      key: "default",
-      fn: function (scope) {
-        return [_vm.item.key !== 'handle' ? _c('div', [_vm.$scopedSlots[_vm.item.key] ? _c('div', [_vm._t(_vm.item.key, null, {
-          "data": scope.row,
-          "index": scope.$index
-        })], 2) : _c('p', [_vm.item.isMoney ? _c('span', [_vm._v(_vm._s(_vm.forMatterMoney(scope.row[_vm.item.key])))]) : _c('span', [_vm._v(_vm._s(scope.row[_vm.item.key] || scope.row[_vm.item.key] == "0" ? scope.row[_vm.item.key] : "--"))])])]) : _c('div', [_vm._t("handle", null, {
-          "row": scope.row,
-          "index": scope.$index
-        })], 2)];
-      }
-    }], null, true)
-  })], 1)], 1), _vm.tableGlobalConfig.showPagination ? _c('Pagination', {
+  }) : _vm._e(), _vm._l(_vm.getTableColumnConfig, function (item, index) {
+    return _c('el-table-column', {
+      key: index,
+      attrs: {
+        "label": item.title,
+        "width": item.width || 'auto',
+        "fixed": item.fixed || false,
+        "sortable": item.sortable || false,
+        "show-overflow-tooltip": item.key !== 'handle'
+      },
+      scopedSlots: _vm._u([{
+        key: "default",
+        fn: function (scope) {
+          return [item.key !== 'handle' ? _c('div', [_vm.$scopedSlots[item.key] ? _c('div', [_vm._t(item.key, null, {
+            "data": scope.row,
+            "index": scope.$index
+          })], 2) : _c('p', [item.isMoney ? _c('span', [_vm._v(_vm._s(_vm.forMatterMoney(scope.row[item.key])))]) : _c('span', [_vm._v(_vm._s(scope.row[item.key] || scope.row[item.key] == "0" ? scope.row[item.key] : "--"))])])]) : _c('div', [_vm._t("handle", null, {
+            "row": scope.row,
+            "index": scope.$index
+          })], 2)];
+        }
+      }], null, true)
+    });
+  })], 2)], 1), _vm.tableGlobalConfig.showPagination ? _c('Pagination', {
     attrs: {
       "config": _vm.paginationData
     },
@@ -37411,13 +36819,12 @@ var tablevue_type_template_id_df814922_scoped_true_render = function render() {
     }
   }) : _vm._e()], 1);
 };
-var tablevue_type_template_id_df814922_scoped_true_staticRenderFns = [];
+var tablevue_type_template_id_18261b62_scoped_true_staticRenderFns = [];
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=template&id=68e1f588&scoped=true&
-var paginationvue_type_template_id_68e1f588_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=template&id=539addd2&scoped=true&
+var paginationvue_type_template_id_539addd2_scoped_true_render = function render() {
   var _vm = this,
-    _c = _vm._self._c,
-    _setup = _vm._self._setupProxy;
+    _c = _vm._self._c;
   return _c('section', {
     class: ['pagination reset-style-pagination', _vm.custormConfig.align]
   }, [_c('el-pagination', {
@@ -37437,19 +36844,9 @@ var paginationvue_type_template_id_68e1f588_scoped_true_render = function render
     }
   })], 1);
 };
-var paginationvue_type_template_id_68e1f588_scoped_true_staticRenderFns = [];
+var paginationvue_type_template_id_539addd2_scoped_true_staticRenderFns = [];
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=script&lang=ts&
-
-var paginationvue_type_script_lang_ts_decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-  var c = arguments.length,
-    r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-    d;
-  if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-  return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=script&lang=js&
 
 const defaultConfig = {
   align: "right",
@@ -37462,17 +36859,27 @@ const defaultConfig = {
   disabled: false,
   layout: "total, prev, pager, next,sizes, jumper"
 };
-let PaginationComponent = /** 分页组件  */
-class PaginationComponent extends (external_commonjs_vue_commonjs2_vue_root_Vue_default()) {
-  constructor(...args) {
-    super(...args);
-    _defineProperty(this, "config", void 0);
-    // 自定义配置
-    _defineProperty(this, "custormConfig", {
-      ...defaultConfig
-    });
+/* harmony default export */ var paginationvue_type_script_lang_js_ = ({
+  name: "PaginationComponent",
+  components: {
+    "el-pagination": element_ui_common.Pagination
+  },
+  props: {
+    config: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  data() {
+    return {
+      custormConfig: {
+        ...defaultConfig
+      }
+    };
+  },
+  methods: {
     /** 分页大小变化 */
-    _defineProperty(this, "handleSizeChange", val => {
+    handleSizeChange(val) {
       this.custormConfig.pageSize = val;
       this.custormConfig.currentPage = 1;
       this.$emit("getPaginationData", {
@@ -37480,61 +36887,52 @@ class PaginationComponent extends (external_commonjs_vue_commonjs2_vue_root_Vue_
         pageSize: val,
         currentPage: 1
       });
-    });
-  }
-  configChange(newVal) {
-    this.custormConfig = {
-      ...this.custormConfig,
-      ...(this.config || {})
-    };
-  }
-  /** 获取分页信息 */
-  getPaginationData() {
-    return {
-      currentPage: this.custormConfig.currentPage,
-      pageSize: this.custormConfig.pageSize,
-      total: this.custormConfig.total
-    };
-  }
-  /** 当前页变化 */
-  handleCurrentChange(val) {
-    this.custormConfig.currentPage = val;
-    this.$emit("getPaginationData", {
-      ...this.getPaginationData(),
-      currentPage: val
-    });
-    if (val >= 30) {
-      document.documentElement.scrollTop = 0;
+    },
+    /** 获取分页信息 */
+    getPaginationData() {
+      return {
+        currentPage: this.custormConfig.currentPage,
+        pageSize: this.custormConfig.pageSize,
+        total: this.custormConfig.total
+      };
+    },
+    /** 当前页变化 */
+    handleCurrentChange(val) {
+      this.custormConfig.currentPage = val;
+      this.$emit("getPaginationData", {
+        ...this.getPaginationData(),
+        currentPage: val
+      });
+      if (val >= 30) {
+        document.documentElement.scrollTop = 0;
+      }
+    },
+    /** 重置分页 */
+    resetPagination() {
+      this.custormConfig.currentPage = 1;
+      this.custormConfig.pageSize = 10;
+      this.custormConfig.total = 0;
+    }
+  },
+  watch: {
+    config: {
+      handler(newVal) {
+        this.custormConfig = {
+          ...this.custormConfig,
+          ...(newVal || {})
+        };
+      },
+      deep: true,
+      immediate: true
     }
   }
-  /** 重置分页 */
-  resetPagination() {
-    this.custormConfig.currentPage = 1;
-    this.custormConfig.pageSize = 10;
-    this.custormConfig.total = 0;
-  }
-};
-paginationvue_type_script_lang_ts_decorate([Prop({
-  default: () => {}
-})], PaginationComponent.prototype, "config", void 0);
-paginationvue_type_script_lang_ts_decorate([Watch("config", {
-  deep: true,
-  immediate: true
-})], PaginationComponent.prototype, "configChange", null);
-PaginationComponent = paginationvue_type_script_lang_ts_decorate([vue_class_component_esm({
-  name: 'PaginationComponent',
-  components: {
-    "el-pagination": element_ui_common.Pagination
-  }
-})
-/** 分页组件  */], PaginationComponent);
-/* harmony default export */ var paginationvue_type_script_lang_ts_ = (PaginationComponent);
-;// CONCATENATED MODULE: ./src/components/pagination.vue?vue&type=script&lang=ts&
- /* harmony default export */ var components_paginationvue_type_script_lang_ts_ = (paginationvue_type_script_lang_ts_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-77.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-77.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-77.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-77.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=style&index=0&id=68e1f588&prod&scoped=true&lang=less&
+});
+;// CONCATENATED MODULE: ./src/components/pagination.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_paginationvue_type_script_lang_js_ = (paginationvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-77.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-77.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-77.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-77.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=style&index=0&id=539addd2&prod&scoped=true&lang=less&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/pagination.vue?vue&type=style&index=0&id=68e1f588&prod&scoped=true&lang=less&
+;// CONCATENATED MODULE: ./src/components/pagination.vue?vue&type=style&index=0&id=539addd2&prod&scoped=true&lang=less&
 
 ;// CONCATENATED MODULE: ./src/components/pagination.vue
 
@@ -37546,178 +36944,162 @@ PaginationComponent = paginationvue_type_script_lang_ts_decorate([vue_class_comp
 /* normalize component */
 
 var pagination_component = normalizeComponent(
-  components_paginationvue_type_script_lang_ts_,
-  paginationvue_type_template_id_68e1f588_scoped_true_render,
-  paginationvue_type_template_id_68e1f588_scoped_true_staticRenderFns,
+  components_paginationvue_type_script_lang_js_,
+  paginationvue_type_template_id_539addd2_scoped_true_render,
+  paginationvue_type_template_id_539addd2_scoped_true_staticRenderFns,
   false,
   null,
-  "68e1f588",
+  "539addd2",
   null
   
 )
 
 /* harmony default export */ var pagination = (pagination_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=script&lang=ts&
-
-var tablevue_type_script_lang_ts_decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-  var c = arguments.length,
-    r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-    d;
-  if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-  return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=script&lang=js&
 
 
-
-
-let TableComponent = class TableComponent extends (external_commonjs_vue_commonjs2_vue_root_Vue_default()) {
-  constructor(...args) {
-    super(...args);
-    _defineProperty(this, "tableData", void 0);
-    _defineProperty(this, "tableColumnConfig", void 0);
-    _defineProperty(this, "tableConfig", void 0);
-    _defineProperty(this, "paginationData", void 0);
-    _defineProperty(this, "loading", void 0);
-    _defineProperty(this, "tableAttributes", void 0);
-    _defineProperty(this, "tableEvents", void 0);
-    /*   // 获取当前表格配置信息
-      public get getTableColumnConfig() {
-        const isShowEditBtn: boolean = (this as any).$store.getters.getEditBtnShow;
-        if (isShowEditBtn) {
-          return this.tableColumnConfig;
-        } else {
-          const arr: ITableColumnConfig[] = this.tableColumnConfig.filter(
-            (item: ITableColumnConfig) => {
-              return !["handle", "operation"].includes(item.key);
-            }
-          );
-          return arr;
-        }
-      } */
-    // 表格配置项
-    _defineProperty(this, "tableGlobalConfig", {});
-    // 选择的行
-    _defineProperty(this, "selectTr", {
-      value: []
-    });
-    // 表数据
-    _defineProperty(this, "data", []);
-  }
+/* harmony default export */ var tablevue_type_script_lang_js_ = ({
+  name: "TableComponent",
+  components: {
+    "el-table": element_ui_common.Table,
+    "el-table-column": element_ui_common.TableColumn,
+    Pagination: pagination
+  },
+  props: {
+    tableData: {
+      type: Array,
+      default: () => []
+    },
+    tableColumnConfig: {
+      type: Array,
+      default: () => []
+    },
+    tableConfig: {
+      type: Object,
+      default: () => ({})
+    },
+    paginationData: {
+      type: Object,
+      default: () => ({})
+    },
+    loading: {
+      type: Boolean,
+      default: false
+    },
+    tableAttributes: {
+      type: Object,
+      default: () => ({})
+    },
+    tableEvents: {
+      type: Object,
+      default: () => ({})
+    }
+  },
+  data() {
+    return {
+      // 表格配置项
+      tableGlobalConfig: {},
+      // 选择的行
+      selectTr: {
+        value: []
+      },
+      // 表数据
+      data: []
+    };
+  },
+  computed: {
+    getTableColumnConfig() {
+      return this.tableColumnConfig;
+    }
+  },
   /** mounted */
   mounted() {
     this.initTableGlobalConfig();
     this.$bus.$on("clearTableTr", res => {
       this.clearSelection();
     });
-  }
+  },
   beforeDestroy() {
     this.$bus.$off("clearTableTr");
-  }
-  // 初始defaultSelectable
-  defaultSelectable(row, index) {
-    return true;
-  }
-  // 获取生成当前行key
-  getCurRowKey(row) {
-    return JSON.stringify({
-      ...row
-    });
-  }
-  // 取消已选
-  clearSelection() {
-    if (this.$refs.tableComponentRef) {
-      this.$refs.tableComponentRef.clearSelection();
+  },
+  methods: {
+    // 初始defaultSelectable
+    defaultSelectable(row, index) {
+      return true;
+    },
+    // 获取生成当前行key
+    getCurRowKey(row) {
+      return JSON.stringify({
+        ...row
+      });
+    },
+    // 取消已选
+    clearSelection() {
+      if (this.$refs.tableComponentRef) {
+        this.$refs.tableComponentRef.clearSelection();
+      }
+    },
+    //初始表单配置默认值
+    initTableGlobalConfig() {
+      this.tableGlobalConfig = {
+        border: true,
+        stripe: true,
+        showIndex: true,
+        rowClassName: () => {
+          return "custorm-row";
+        },
+        indexMethod: index => {
+          return index + 1;
+        },
+        cellClassName: () => {
+          return "custorm-cell";
+        },
+        maxHeight: 800,
+        selection: true,
+        tableLayout: "fixed",
+        showPagination: true,
+        custormClass: "table-loading-box",
+        ...this.tableConfig
+      };
+    },
+    // 表格选择
+    handleSelectionChange(val) {
+      this.selectTr.value = val;
+      this.$emit("getSelectRow", val);
+    },
+    /** 分页变化 */
+    getPaginationData() {
+      this.$emit("currentPageChange", data);
+    },
+    /** @param { string | number | null }  value
+     * 格式化当前数据为金额 */
+    forMatterMoney(value) {
+      const dataType = typeof value;
+      const reg = /^\-?\d+(\.\d+)?$/;
+      const formatter = cur => {
+        if (!cur || !reg.test(cur)) {
+          return cur;
+        }
+        const arr = cur.split(".") || [];
+        const xiaoshu = arr && arr.length >= 2 ? arr[1] : "00";
+        const subXiaoshu = xiaoshu.length >= 2 ? xiaoshu.substring(0, 2) : `${xiaoshu}0`;
+        return Number(`${arr[0]}`).toLocaleString() + `.${subXiaoshu}`;
+      };
+      const typeFunctiony = {
+        string: () => formatter(value),
+        number: () => formatter(value.toString()),
+        object: () => value
+      };
+      return typeFunction[dataType] ? typeFunction[dataType]() : "--";
     }
   }
-  //初始表单配置默认值
-  initTableGlobalConfig() {
-    this.tableGlobalConfig = {
-      border: true,
-      stripe: true,
-      showIndex: true,
-      rowClassName: () => {
-        return "custorm-row";
-      },
-      indexMethod: index => {
-        return index + 1;
-      },
-      cellClassName: () => {
-        return "custorm-cell";
-      },
-      maxHeight: 800,
-      selection: true,
-      tableLayout: "fixed",
-      showPagination: true,
-      custormClass: "table-loading-box",
-      ...this.tableConfig
-    };
-  }
-  // 表格选择
-  handleSelectionChange(val) {
-    this.selectTr.value = val;
-    this.$emit("getSelectRow", val);
-  }
-  /** 分页变化 */
-  getPaginationData(data) {
-    this.$emit("currentPageChange", data);
-  }
-  /** 格式化当前数据为金额 */
-  forMatterMoney(value) {
-    const dataType = typeof value;
-    const reg = /^\-?\d+(\.\d+)?$/;
-    const formatter = cur => {
-      if (!cur || !reg.test(cur)) {
-        return cur;
-      }
-      const arr = cur.split(".") || [];
-      const xiaoshu = arr && arr.length >= 2 ? arr[1] : "00";
-      const subXiaoshu = xiaoshu.length >= 2 ? xiaoshu.substring(0, 2) : `${xiaoshu}0`;
-      return Number(`${arr[0]}`).toLocaleString() + `.${subXiaoshu}`;
-    };
-    const typeFunction = {
-      string: () => formatter(value),
-      number: () => formatter(value.toString()),
-      object: () => value
-    };
-    return typeFunction[dataType] ? typeFunction[dataType]() : "--";
-  }
-};
-tablevue_type_script_lang_ts_decorate([Prop({
-  default: () => []
-})], TableComponent.prototype, "tableData", void 0);
-tablevue_type_script_lang_ts_decorate([Prop({
-  default: () => {}
-})], TableComponent.prototype, "tableColumnConfig", void 0);
-tablevue_type_script_lang_ts_decorate([Prop({
-  default: () => {}
-})], TableComponent.prototype, "tableConfig", void 0);
-tablevue_type_script_lang_ts_decorate([Prop({
-  default: () => {}
-})], TableComponent.prototype, "paginationData", void 0);
-tablevue_type_script_lang_ts_decorate([Prop({
-  default: false
-})], TableComponent.prototype, "loading", void 0);
-tablevue_type_script_lang_ts_decorate([Prop({
-  default: () => {}
-})], TableComponent.prototype, "tableAttributes", void 0);
-tablevue_type_script_lang_ts_decorate([Prop({
-  default: () => {}
-})], TableComponent.prototype, "tableEvents", void 0);
-TableComponent = tablevue_type_script_lang_ts_decorate([vue_class_component_esm({
-  name: 'TableComponent',
-  components: {
-    "el-table": element_ui_common.Table,
-    "el-table-column": element_ui_common.TableColumn,
-    Pagination: pagination
-  }
-})], TableComponent);
-/* harmony default export */ var tablevue_type_script_lang_ts_ = (TableComponent);
-;// CONCATENATED MODULE: ./src/components/table.vue?vue&type=script&lang=ts&
- /* harmony default export */ var components_tablevue_type_script_lang_ts_ = (tablevue_type_script_lang_ts_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-77.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-77.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-77.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-77.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=style&index=0&id=df814922&prod&scoped=true&lang=less&
+});
+;// CONCATENATED MODULE: ./src/components/table.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_tablevue_type_script_lang_js_ = (tablevue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-77.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-77.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-77.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-77.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=style&index=0&id=18261b62&prod&scoped=true&lang=less&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/table.vue?vue&type=style&index=0&id=df814922&prod&scoped=true&lang=less&
+;// CONCATENATED MODULE: ./src/components/table.vue?vue&type=style&index=0&id=18261b62&prod&scoped=true&lang=less&
 
 ;// CONCATENATED MODULE: ./src/components/table.vue
 
@@ -37729,22 +37111,21 @@ TableComponent = tablevue_type_script_lang_ts_decorate([vue_class_component_esm(
 /* normalize component */
 
 var table_component = normalizeComponent(
-  components_tablevue_type_script_lang_ts_,
-  tablevue_type_template_id_df814922_scoped_true_render,
-  tablevue_type_template_id_df814922_scoped_true_staticRenderFns,
+  components_tablevue_type_script_lang_js_,
+  tablevue_type_template_id_18261b62_scoped_true_render,
+  tablevue_type_template_id_18261b62_scoped_true_staticRenderFns,
   false,
   null,
-  "df814922",
+  "18261b62",
   null
   
 )
 
 /* harmony default export */ var table = (table_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/upload.vue?vue&type=template&id=6a4d7400&scoped=true&
-var uploadvue_type_template_id_6a4d7400_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/upload.vue?vue&type=template&id=45a34c7e&scoped=true&
+var uploadvue_type_template_id_45a34c7e_scoped_true_render = function render() {
   var _vm = this,
-    _c = _vm._self._c,
-    _setup = _vm._self._setupProxy;
+    _c = _vm._self._c;
   return _c('div', {
     staticClass: "upload-group"
   }, [_c('Button', {
@@ -37839,7 +37220,7 @@ var uploadvue_type_template_id_6a4d7400_scoped_true_render = function render() {
     }
   }, [_vm._v(_vm._s(_vm.$t("uploadHost")))])], 1)])], 1);
 };
-var uploadvue_type_template_id_6a4d7400_scoped_true_staticRenderFns = [];
+var uploadvue_type_template_id_45a34c7e_scoped_true_staticRenderFns = [];
 
 // EXTERNAL MODULE: ./node_modules/core-js/modules/web.dom-exception.stack.js
 var web_dom_exception_stack = __webpack_require__(2801);
@@ -37849,145 +37230,139 @@ var esnext_typed_array_to_reversed = __webpack_require__(3767);
 var esnext_typed_array_to_sorted = __webpack_require__(8585);
 // EXTERNAL MODULE: ./node_modules/core-js/modules/esnext.typed-array.with.js
 var esnext_typed_array_with = __webpack_require__(8696);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js!./node_modules/ts-loader/index.js??clonedRuleSet-86.use[2]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/upload.vue?vue&type=script&lang=ts&
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/upload.vue?vue&type=script&lang=js&
 
 
 
 
 
-var uploadvue_type_script_lang_ts_decorate = undefined && undefined.__decorate || function (decorators, target, key, desc) {
-  var c = arguments.length,
-    r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc,
-    d;
-  if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-  return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-
-
-
-let UploadGroup = class UploadGroup extends (external_commonjs_vue_commonjs2_vue_root_Vue_default()) {
-  constructor(...args) {
-    super(...args);
-    _defineProperty(this, "callBack", void 0);
-    _defineProperty(this, "fn", void 0);
-    // 导入调用的接口
-    _defineProperty(this, "title", void 0);
-    _defineProperty(this, "disabled", void 0);
-    _defineProperty(this, "uploadFileExt", void 0);
-    // 加载中
-    _defineProperty(this, "isLoading", false);
-    /* @Prop({ default: "" }) url!: string; */
-    // 是否展示dialog
-    _defineProperty(this, "dialogVisible", false);
-    _defineProperty(this, "fileName", "");
-    _defineProperty(this, "uploadNumber", 0);
-  }
-  /** 选择文件 */
-  openFileChcked() {
-    this.$refs.file.click();
-  }
-  /** 文件清除 */
-  deleteFile() {
-    this.fileName = "";
-    this.$refs.file.value = "";
-    this.uploadNumber = 0;
-  }
-  /** 关闭 */
-  dialogClose() {
-    this.deleteFile();
-  }
-  /** 文件变化 */
-  async fileChange(e) {
-    if (e) {
-      const exts = this.uploadFileExt;
-      const name = e.target.files[0].name;
-      this.fileName = name;
-      const ext = name.substring(name.lastIndexOf(".") + 1);
-      if (!exts.includes(ext.toLowerCase())) {
-        this.$message({
-          type: "warning",
-          message: this.$t("uploadExtErr")
-        });
-        this.fileName = "";
-        this.$refs.file.value = "";
-        return;
-      }
-    }
-  }
-  /** 文件转arrayBuffer */
-  async toBuffer(file, func) {
-    return new Promise(resolve => {
-      let reader = new FileReader();
-      reader.readAsDataURL(file);
-      reader.onload = function () {
-        const dataURI = this.result;
-        var byteString = atob(dataURI.split(",")[1]);
-        var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
-        var ab = new ArrayBuffer(byteString.length);
-        var ia = new Uint8Array(ab);
-        for (var i = 0; i < byteString.length; i++) {
-          ia[i] = byteString.charCodeAt(i);
-        }
-        const blob = new Blob([ab], {
-          type: mimeString
-        });
-        let reader2 = new FileReader();
-        reader2.onload = function (result) {
-          resolve(func(result.target.result));
-        };
-        reader2.readAsArrayBuffer(blob);
-      };
-    });
-  }
-  /** 上传进度 */
-  onUploadProgress(data) {
-    this.uploadNumber = Math.floor(data.loaded / data.total * 100);
-  }
-  /** 上传到服务器 */
-  async uploadServer() {
-    const files = this.$refs.file.files;
-    if (files && files.length) {
-      this.isLoading = true;
-      // 上传文件
-      try {
-        // const data = await uploadFile([files[0]]);
-        const data = await this.fn([files[0]], this.onUploadProgress);
-        this.dialogVisible = false;
-        this.isLoading = false;
-        this.deleteFile();
-        this.callBack(data);
-      } catch (e) {
-        this.callBack(null);
-      }
-    }
-  }
-};
-uploadvue_type_script_lang_ts_decorate([Prop({
-  default: () => {}
-})], UploadGroup.prototype, "callBack", void 0);
-uploadvue_type_script_lang_ts_decorate([Prop({
-  default: () => {}
-})], UploadGroup.prototype, "fn", void 0);
-uploadvue_type_script_lang_ts_decorate([Prop({})], UploadGroup.prototype, "title", void 0);
-uploadvue_type_script_lang_ts_decorate([Prop({})], UploadGroup.prototype, "disabled", void 0);
-uploadvue_type_script_lang_ts_decorate([Prop({
-  default: () => ["xlsx", "xls"]
-})], UploadGroup.prototype, "uploadFileExt", void 0);
-UploadGroup = uploadvue_type_script_lang_ts_decorate([vue_class_component_esm({
-  name: 'UploadGroup',
+/* harmony default export */ var uploadvue_type_script_lang_js_ = ({
+  name: "UploadGroup",
   components: {
     Button: element_ui_common.Button,
     Dialog: element_ui_common.Dialog,
     Progress: element_ui_common.Progress
+  },
+  props: {
+    callBack: {
+      type: Function,
+      default: () => {}
+    },
+    fn: {
+      type: Function,
+      default: () => {}
+    },
+    title: {
+      type: String,
+      default: ''
+    },
+    uploadFileExt: {
+      type: Array,
+      default: () => ["xlsx", "xls"]
+    },
+    disabled: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      // 加载中
+      isLoading: false,
+      // 是否展示dialog
+      dialogVisible: false,
+      fileName: "",
+      uploadNumber: 0
+    };
+  },
+  methods: {
+    /** 选择文件 */
+    openFileChcked() {
+      this.$refs.file.click();
+    },
+    /** 文件清除 */
+    deleteFile() {
+      this.fileName = "";
+      this.$refs.file.value = "";
+      this.uploadNumber = 0;
+    },
+    /** 关闭 */
+    dialogClose() {
+      this.deleteFile();
+    },
+    /** 文件变化 */
+    async fileChange(e) {
+      if (e) {
+        const exts = this.uploadFileExt;
+        const name = e.target.files[0].name;
+        this.fileName = name;
+        const ext = name.substring(name.lastIndexOf(".") + 1);
+        if (!exts.includes(ext.toLowerCase())) {
+          this.$message({
+            type: "warning",
+            message: this.$t("uploadExtErr")
+          });
+          this.fileName = "";
+          this.$refs.file.value = "";
+          return;
+        }
+      }
+    },
+    /** 文件转arrayBuffer */
+    async toBuffer(file, func = () => {}) {
+      return new Promise(resolve => {
+        let reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+          const dataURI = this.result;
+          var byteString = atob(dataURI.split(",")[1]);
+          var mimeString = dataURI.split(",")[0].split(":")[1].split(";")[0];
+          var ab = new ArrayBuffer(byteString.length);
+          var ia = new Uint8Array(ab);
+          for (var i = 0; i < byteString.length; i++) {
+            ia[i] = byteString.charCodeAt(i);
+          }
+          const blob = new Blob([ab], {
+            type: mimeString
+          });
+          let reader2 = new FileReader();
+          reader2.onload = function (result) {
+            resolve(func(result.target.result));
+          };
+          reader2.readAsArrayBuffer(blob);
+        };
+      });
+    },
+    /** 上传进度 */
+    onUploadProgress(data) {
+      this.uploadNumber = Math.floor(data.loaded / data.total * 100);
+    },
+    /** 上传到服务器 */
+    async uploadServer() {
+      const files = this.$refs.file.files;
+      if (files && files.length) {
+        this.isLoading = true;
+        // 上传文件
+        try {
+          // const data = await uploadFile([files[0]]);
+          const data = await this.fn([files[0]], this.onUploadProgress);
+          this.dialogVisible = false;
+          this.isLoading = false;
+          this.deleteFile();
+          this.callBack(data);
+        } catch (e) {
+          this.callBack(null);
+        }
+      }
+    }
   }
-})], UploadGroup);
-/* harmony default export */ var uploadvue_type_script_lang_ts_ = (UploadGroup);
-;// CONCATENATED MODULE: ./src/components/upload.vue?vue&type=script&lang=ts&
- /* harmony default export */ var components_uploadvue_type_script_lang_ts_ = (uploadvue_type_script_lang_ts_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-77.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-77.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-77.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-77.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/upload.vue?vue&type=style&index=0&id=6a4d7400&prod&scoped=true&lang=less&
+});
+;// CONCATENATED MODULE: ./src/components/upload.vue?vue&type=script&lang=js&
+ /* harmony default export */ var components_uploadvue_type_script_lang_js_ = (uploadvue_type_script_lang_js_); 
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-77.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-77.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-77.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-77.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/upload.vue?vue&type=style&index=0&id=45a34c7e&prod&scoped=true&lang=less&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/upload.vue?vue&type=style&index=0&id=6a4d7400&prod&scoped=true&lang=less&
+;// CONCATENATED MODULE: ./src/components/upload.vue?vue&type=style&index=0&id=45a34c7e&prod&scoped=true&lang=less&
 
 ;// CONCATENATED MODULE: ./src/components/upload.vue
 
@@ -37999,19 +37374,116 @@ UploadGroup = uploadvue_type_script_lang_ts_decorate([vue_class_component_esm({
 /* normalize component */
 
 var upload_component = normalizeComponent(
-  components_uploadvue_type_script_lang_ts_,
-  uploadvue_type_template_id_6a4d7400_scoped_true_render,
-  uploadvue_type_template_id_6a4d7400_scoped_true_staticRenderFns,
+  components_uploadvue_type_script_lang_js_,
+  uploadvue_type_template_id_45a34c7e_scoped_true_render,
+  uploadvue_type_template_id_45a34c7e_scoped_true_staticRenderFns,
   false,
   null,
-  "6a4d7400",
+  "45a34c7e",
   null
   
 )
 
 /* harmony default export */ var upload = (upload_component.exports);
+;// CONCATENATED MODULE: ./src/lang/zh.ts
+const zh = {
+  placeInputInfo: '请输入',
+  placeSelect: '请选择',
+  loading: '加载中',
+  placeSelectDate: '请选择日期',
+  startDate: '开始日期',
+  endDate: '结束日期',
+  placeSelectTime: '请选择时间',
+  threeDay: '最近三天',
+  oneWeek: '最近一周',
+  fixteenDay: '最近半月',
+  oneMonth: '最近一月',
+  threeMonth: '最近三月',
+  sixMonth: '最近半年',
+  oneYear: '最近一年',
+  twoYear: '最近两年',
+  threeYear: '最近三年',
+  currentDay: '当天',
+  SerialNo: '序号',
+  selectFile: '选择文件',
+  importFile: '导入文件',
+  uploadExtErr: '导入文件的格式不支持，请选择xlx/xlsx的文件',
+  clickSelectFile: '点击选择文件',
+  uploadHost: '上传至服务器',
+  cancel: '取消',
+  placeSelectFile: '请先选择xlx/xlsx文件',
+  reset: '重置',
+  search: '查询',
+  queryResults: '查询结果',
+  import: '导入',
+  uploadImport: '上传导入',
+  batchDeletion: '批量删除',
+  delete: '删除',
+  edit: '编辑',
+  confirm: '确认',
+  operation: '操作',
+  areYouSureToDelete: '是否确认删除',
+  tips: '提示',
+  operationSucceeded: '操作成功',
+  operationFailed: '操作失败',
+  pleaseCheckTheData: '请勾选数据',
+  add: '新增',
+  exportTemplate: '导出模板',
+  exportData: '导出数据'
+};
+
+/** node调百度翻译  开发时用*/
+/* module.exports = {
+  zh: zh
+}
+ */
+;// CONCATENATED MODULE: ./src/lang/en.ts
+const en = {
+  "placeInputInfo": "Please enter",
+  "placeSelect": "Please select",
+  "loading": "Loading",
+  "placeSelectDate": "Please select a date",
+  "startDate": "Start Date",
+  "endDate": "End Date",
+  "placeSelectTime": "Please select a time",
+  "threeDay": "Last three days",
+  "oneWeek": "Last Week",
+  "fixteenDay": "Last Half Month",
+  "oneMonth": "Last Month",
+  "threeMonth": "Last March",
+  "sixMonth": "Last Half Year",
+  "oneYear": "Last year",
+  "twoYear": "Last two years",
+  "threeYear": "Last three years",
+  "currentDay": "Same day",
+  "SerialNo": "Serial Number",
+  "selectFile": "Select File",
+  "importFile": "Import File",
+  "uploadExtErr": "The format of the import file is not supported. Please select a file with xlx/xlsx",
+  "clickSelectFile": "Click to select a file",
+  "uploadHost": "Upload to server",
+  "cancel": "Cancel",
+  "placeSelectFile": "Please select an xlx/xlsx file first",
+  "reset": "Reset",
+  "search": "Query",
+  "queryResults": "Query Results",
+  "import": "Import",
+  "uploadImport": "Upload Import",
+  "batchDeletion": "Batch Delete",
+  "delete": "Delete",
+  "edit": "Edit",
+  "confirm": "Confirm",
+  "operation": "Operation",
+  "areYouSureToDelete": "Are you sure to delete",
+  "tips": "Tips",
+  "operationSucceeded": "Operation succeeded",
+  "operationFailed": "Operation failed",
+  "pleaseCheckTheData": "Please tick the data",
+  "add": "Newly added",
+  "exportTemplate": "Export Template",
+  "exportData": "Export Data"
+};
 ;// CONCATENATED MODULE: ./entry.build.js
- // css样式初始化
 
 
 
@@ -38020,16 +37492,25 @@ var upload_component = normalizeComponent(
 
 
 
+
+const langData = {
+  CN: zh,
+  EN: en
+};
 const componenList = [formItemGroup, InputMoney, remoteMethodSelect, table_title, table, upload];
-const install = Vue => {
-  Vue.prototype.$loading = element_ui_common.Loading.service;
-  Vue.prototype.$msgbox = element_ui_common.MessageBox;
-  Vue.prototype.$alert = element_ui_common.MessageBox.alert;
-  Vue.prototype.$confirm = element_ui_common.MessageBox.confirm;
-  Vue.prototype.$prompt = element_ui_common.MessageBox.prompt;
-  Vue.prototype.$notify = element_ui_common.Notification;
-  Vue.prototype.$message = element_ui_common.Message;
+const install = (Vue, options) => {
+  options.lang = options.lang || 'lang';
+  let currentLang = localStorage.getItem(options.lang) || 'CN';
+  if (!['CN', 'EN'].includes(currentLang)) {
+    currentLang = 'CN';
+  }
+  Vue.use(element_ui_common.Loading.directive);
   Vue.prototype.$bus = new Vue();
+  Vue.prototype.$lang = currentLang;
+  Vue.prototype.$message = element_ui_common.Message;
+  Vue.prototype.$t = key => {
+    return langData[currentLang][key] || key;
+  };
   componenList.forEach(item => {
     Vue.component(item.name, item);
   });
