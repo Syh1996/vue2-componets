@@ -1,6 +1,7 @@
 <template>
   <section :class="['pagination reset-style-pagination', custormConfig.align]">
     <el-pagination
+      :v-bind="custormConfig.attributes || {}"
       :current-page="custormConfig.currentPage"
       :page-size="custormConfig.pageSize"
       :page-sizes="custormConfig.sizes"

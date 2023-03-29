@@ -36811,14 +36811,15 @@ var tablevue_type_template_id_35546cf6_scoped_true_render = function render() {
 };
 var tablevue_type_template_id_35546cf6_scoped_true_staticRenderFns = [];
 
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=template&id=539addd2&scoped=true&
-var paginationvue_type_template_id_539addd2_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=template&id=593e52c7&scoped=true&
+var paginationvue_type_template_id_593e52c7_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('section', {
     class: ['pagination reset-style-pagination', _vm.custormConfig.align]
   }, [_c('el-pagination', {
     attrs: {
+      "v-bind": _vm.custormConfig.attributes || {},
       "current-page": _vm.custormConfig.currentPage,
       "page-size": _vm.custormConfig.pageSize,
       "page-sizes": _vm.custormConfig.sizes,
@@ -36834,7 +36835,7 @@ var paginationvue_type_template_id_539addd2_scoped_true_render = function render
     }
   })], 1);
 };
-var paginationvue_type_template_id_539addd2_scoped_true_staticRenderFns = [];
+var paginationvue_type_template_id_593e52c7_scoped_true_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=script&lang=js&
 
@@ -36919,10 +36920,10 @@ const defaultConfig = {
 });
 ;// CONCATENATED MODULE: ./src/components/pagination.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_paginationvue_type_script_lang_js_ = (paginationvue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-32.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-32.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-32.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-32.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=style&index=0&id=539addd2&prod&scoped=true&lang=less&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-32.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-32.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-32.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-32.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=style&index=0&id=593e52c7&prod&scoped=true&lang=less&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/pagination.vue?vue&type=style&index=0&id=539addd2&prod&scoped=true&lang=less&
+;// CONCATENATED MODULE: ./src/components/pagination.vue?vue&type=style&index=0&id=593e52c7&prod&scoped=true&lang=less&
 
 ;// CONCATENATED MODULE: ./src/components/pagination.vue
 
@@ -36935,11 +36936,11 @@ const defaultConfig = {
 
 var pagination_component = normalizeComponent(
   components_paginationvue_type_script_lang_js_,
-  paginationvue_type_template_id_539addd2_scoped_true_render,
-  paginationvue_type_template_id_539addd2_scoped_true_staticRenderFns,
+  paginationvue_type_template_id_593e52c7_scoped_true_render,
+  paginationvue_type_template_id_593e52c7_scoped_true_staticRenderFns,
   false,
   null,
-  "539addd2",
+  "593e52c7",
   null
   
 )

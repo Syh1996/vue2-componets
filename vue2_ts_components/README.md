@@ -8,6 +8,12 @@
 
 组件主要为系统管理产品提供较快封装组件。
 
+
+
+> 涉及的自定义配置组件，内部均有默认配置，你可以先观察默认情况是否满足你的预期，再进行修改，这将减少你不必要的配置
+
+
+
 ### 开始
 
 #### 安装
@@ -107,6 +113,38 @@ import {
 
 
 
+#### 远程搜索 
+
+##### 使用
+
+```html
+   <RemoteMethodSelect
+              v-model="name"
+              :loadApi="getNameFunction"
+              @getFullData="getFullData"
+   ></RemoteMethodSelect>
+<script>
+  new Vue({
+      methods:{
+          /**
+            * params为远程搜索输入关键字
+            * @pamra { object } params;
+          **/
+          async getNameFunction(params){
+              const result =  axios.get(url,pamras);
+              /** 请返回一个带有label  and value 两个字段的数据  **/
+              return result.map(item=>({
+                  label: item.text,
+                  value: item.id
+              }));
+          }
+      }
+  })
+</script>
+```
+
+
+
 #### 分页封装
 
 ##### 使用
@@ -116,18 +154,19 @@ import {
  </PaginationComponent>
 ```
 
-| 参数               | 说明                         | 默认值                                                     |
-| ------------------ | ---------------------------- | ---------------------------------------------------------- |
-| config.currentPage | 当前页                       | Number型，默认值：1                                        |
-| config.pageSize    | 分页展示的数量               | Number型，默认值：10                                       |
-| config.pageSizes   | 每页显示个数选择器的选项设置 | Number[]型，默认值：[10, 20, 30, 50, 100]                  |
-| config.total       | 数据总数                     | Number型，默认值：0                                        |
-| config.small       | 是否使用小型分页样式         | Boolean型，默认值：false                                   |
-| config.background  | 是否为分页按钮添加背景色     | Boolean型，默认值：true                                    |
-| config.disabled    | 是否禁用分页                 | Boolean型，默认值：false                                   |
-| config.layout      | 组件布局，子组件名用逗号分隔 | String型，默认值："total, prev, pager, next,sizes, jumper" |
-| config.align       | 分页组件对齐方式             | String型，默认值“right"，支持"left/center/right"           |
-| @getPaginationData | 分页数量、当前页变化时触发   | ({currentPage,pageSize})=>{}                               |
+| 参数               | 说明                                   | 默认值                                                     |
+| ------------------ | -------------------------------------- | ---------------------------------------------------------- |
+| config.currentPage | 当前页                                 | Number型，默认值：1                                        |
+| config.pageSize    | 分页展示的数量                         | Number型，默认值：10                                       |
+| config.pageSizes   | 每页显示个数选择器的选项设置           | Number[]型，默认值：[10, 20, 30, 50, 100]                  |
+| config.total       | 数据总数                               | Number型，默认值：0                                        |
+| config.small       | 是否使用小型分页样式                   | Boolean型，默认值：false                                   |
+| config.background  | 是否为分页按钮添加背景色               | Boolean型，默认值：true                                    |
+| config.disabled    | 是否禁用分页                           | Boolean型，默认值：false                                   |
+| config.layout      | 组件布局，子组件名用逗号分隔           | String型，默认值："total, prev, pager, next,sizes, jumper" |
+| config.align       | 分页组件对齐方式                       | String型，默认值“right"，支持"left/center/right"           |
+| config.attributes  | 分页组件原生element pagination自带属性 | Object， 参考  attributes = {currentPage: 1,xxx:2}         |
+| @getPaginationData | 分页数量、当前页变化时触发             | ({currentPage,pageSize})=>{}                               |
 
 
 
@@ -217,6 +256,10 @@ new Vue({
 
 当组件配置与element-ui table上的属性共同存在时，组件配置项优先于table上的属性
 
+>  TableComponent内部已设定高频使用表格的配置配置参数，你可以先不传tableConfig配置，来观察是否满足你的预期，如果不满足再进行自定义配置，这将提高你的开发效果
+
+
+
 ```html
 <TableComponent
       :tableConfig="tableConfig"
@@ -287,9 +330,38 @@ new Vue({
 
 **tableAttributes**  可配置element-ui table自带属性，优秀级低级当前组件属性和方法
 
+详细参考Element-ui  https://element.eleme.io/#/zh-CN/component/table   [¶](https://element.eleme.io/#/zh-CN/component/table#table-attributes)Table Attributess配置参数
+
+``````html
+<TableComponent :tableAttributes="{size: 'mini'}"></<TableComponent>
+``````
+
+
+
 **tableEvents**  可配置element-ui table自带方法，优秀级低级当前组件属性和方法
 
+```html
+<TableComponent 
+        :tableEvents="{
+                      select: (selection, row)=>{},
+                      selection-change:(selection)=>{}}"
+>
+</<TableComponent>
+```
+
+
+
 **loading**  表格加载动画 
+
+``````html
+<TableComponent :loading="loadingStatus"></<TableComponent>
+``````
+
+
+
+**paginationData** 表格分页自定义配置参数
+
+> 此外配置具体参数与【分页封装】配置项完全相同，请参数上面分页封装，如果需要隐藏分页可通过config.showPagination = false完成 
 
 
 
@@ -298,6 +370,8 @@ new Vue({
 ##### 预览
 
 ![](http://server.yuhongshao.cn/static/yuhongshao/20220909160349.png)
+
+
 
 
 
