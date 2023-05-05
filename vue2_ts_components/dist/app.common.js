@@ -36724,8 +36724,8 @@ var table_title_component = normalizeComponent(
 )
 
 /* harmony default export */ var table_title = (table_title_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=template&id=35546cf6&scoped=true&
-var tablevue_type_template_id_35546cf6_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=template&id=e06940de&scoped=true&
+var tablevue_type_template_id_e06940de_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('section', {
@@ -36778,7 +36778,7 @@ var tablevue_type_template_id_35546cf6_scoped_true_render = function render() {
       "width": _vm.tableGlobalConfig.indexWidth || 80
     }
   }) : _vm._e(), _vm._l(_vm.getTableColumnConfig, function (item, index) {
-    return _c('el-table-column', {
+    return _c('el-table-column', _vm._b({
       key: index,
       attrs: {
         "label": item.title,
@@ -36799,7 +36799,7 @@ var tablevue_type_template_id_35546cf6_scoped_true_render = function render() {
           })], 2)];
         }
       }], null, true)
-    });
+    }, 'el-table-column', item, false));
   })], 2)], 1), _vm.tableGlobalConfig.showPagination ? _c('Pagination', {
     attrs: {
       "config": _vm.paginationData
@@ -36809,7 +36809,7 @@ var tablevue_type_template_id_35546cf6_scoped_true_render = function render() {
     }
   }) : _vm._e()], 1);
 };
-var tablevue_type_template_id_35546cf6_scoped_true_staticRenderFns = [];
+var tablevue_type_template_id_e06940de_scoped_true_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=template&id=593e52c7&scoped=true&
 var paginationvue_type_template_id_593e52c7_scoped_true_render = function render() {
@@ -37087,10 +37087,10 @@ var pagination_component = normalizeComponent(
 });
 ;// CONCATENATED MODULE: ./src/components/table.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_tablevue_type_script_lang_js_ = (tablevue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-32.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-32.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-32.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-32.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=style&index=0&id=35546cf6&prod&scoped=true&lang=less&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-32.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-32.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-32.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-32.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=style&index=0&id=e06940de&prod&scoped=true&lang=less&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/table.vue?vue&type=style&index=0&id=35546cf6&prod&scoped=true&lang=less&
+;// CONCATENATED MODULE: ./src/components/table.vue?vue&type=style&index=0&id=e06940de&prod&scoped=true&lang=less&
 
 ;// CONCATENATED MODULE: ./src/components/table.vue
 
@@ -37103,11 +37103,11 @@ var pagination_component = normalizeComponent(
 
 var table_component = normalizeComponent(
   components_tablevue_type_script_lang_js_,
-  tablevue_type_template_id_35546cf6_scoped_true_render,
-  tablevue_type_template_id_35546cf6_scoped_true_staticRenderFns,
+  tablevue_type_template_id_e06940de_scoped_true_render,
+  tablevue_type_template_id_e06940de_scoped_true_staticRenderFns,
   false,
   null,
-  "35546cf6",
+  "e06940de",
   null
   
 )

@@ -32,7 +32,7 @@
         </template>
         
   </TableComponent>
-  <MoneyInput v-model="money"></MoneyInput>
+  <MoneyInput v-model="money" size="small" style="width: 240px"></MoneyInput>
   <h2>{{money}}</h2>
   <FormGroup :formConfig="formConfig">
     <template #default="scope">
@@ -59,7 +59,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator';
-
+import InputMoney from './components/InputMoney.vue'
 import axios from 'axios';
 @Component({
   components: {
@@ -126,9 +126,9 @@ export default class App extends Vue {
     },
   ];
   tableData = [
-    {title: '111111111',date: '3小时前'},
+    {title: '111111111',date: '3小时前',},
     {title: '22222222',date: '20小时前'},
-     {title: '111111111',date: '23小时前'},
+     {title: '111111111',date: '23小时前'}, 
     {title: '22222222',date: '230小时前'}
   ]
   public deleteItem(data:any){

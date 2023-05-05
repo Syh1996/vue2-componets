@@ -38,6 +38,7 @@
         />
         <el-table-column
           v-for="(item, index) in getTableColumnConfig"
+          v-bind="item"
           :label="item.title"
           :key="index"
           :width="item.width || 'auto'"
