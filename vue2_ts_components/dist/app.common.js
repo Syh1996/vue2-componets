@@ -36724,8 +36724,8 @@ var table_title_component = normalizeComponent(
 )
 
 /* harmony default export */ var table_title = (table_title_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=template&id=e06940de&scoped=true&
-var tablevue_type_template_id_e06940de_scoped_true_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=template&id=508efabe&scoped=true&
+var tablevue_type_template_id_508efabe_scoped_true_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
   return _c('section', {
@@ -36760,6 +36760,7 @@ var tablevue_type_template_id_e06940de_scoped_true_render = function render() {
       "size": "small"
     },
     on: {
+      "row-click": _vm.rowClick,
       "selection-change": _vm.handleSelectionChange
     }
   }, 'el-table', _vm.tableAttributes, false), _vm.tableEvents), [_vm.tableGlobalConfig.selection ? _c('el-table-column', {
@@ -36768,38 +36769,87 @@ var tablevue_type_template_id_e06940de_scoped_true_render = function render() {
       "width": "55",
       "selectable": _vm.tableGlobalConfig.selectable || _vm.defaultSelectable,
       "reserve-selection": true,
-      "fixed": _vm.tableGlobalConfig.selectionFixed || 'left'
+      "fixed": _vm.tableGlobalConfig.selectionFixed || 'left',
+      "align": _vm.tableGlobalConfig.align
     }
   }) : _vm._e(), _vm.tableGlobalConfig.showIndex ? _c('el-table-column', {
     attrs: {
       "type": "index",
       "label": _vm.$t('SerialNo'),
       "index": _vm.tableGlobalConfig.indexMethod,
-      "width": _vm.tableGlobalConfig.indexWidth || 80
+      "width": _vm.tableGlobalConfig.indexWidth || 80,
+      "align": _vm.tableGlobalConfig.align
     }
   }) : _vm._e(), _vm._l(_vm.getTableColumnConfig, function (item, index) {
     return _c('el-table-column', _vm._b({
       key: index,
       attrs: {
+        "align": _vm.tableGlobalConfig.align,
         "label": item.title,
         "width": item.width || 'auto',
         "fixed": item.fixed || false,
         "sortable": item.sortable || false,
-        "show-overflow-tooltip": item.key !== 'handle'
+        "show-overflow-tooltip": item.key !== 'handle',
+        "prop": item.key
       },
       scopedSlots: _vm._u([{
         key: "default",
         fn: function (scope) {
-          return [item.key !== 'handle' ? _c('div', [_vm.$scopedSlots[item.key] ? _c('div', [_vm._t(item.key, null, {
-            "data": scope.row,
-            "index": scope.$index
-          })], 2) : _c('p', [item.isMoney ? _c('span', [_vm._v(_vm._s(_vm.forMatterMoney(scope.row[item.key])))]) : _c('span', [_vm._v(_vm._s(scope.row[item.key] || scope.row[item.key] == "0" ? scope.row[item.key] : "--"))])])]) : _c('div', [_vm._t("handle", null, {
+          return !item.children || item.children.length === 0 ? [item.key !== 'handle' ? _c('div', [_vm.$scopedSlots[item.key] ? _c('div', {
+            on: {
+              "click": _vm.slotClick
+            }
+          }, [_vm._t(item.key, null, {
             "row": scope.row,
             "index": scope.$index
-          })], 2)];
+          })], 2) : _c('p', [item.isMoney ? _c('span', [_vm._v(_vm._s(_vm.forMatterMoney(scope.row[item.key])))]) : _c('span', [_vm._v(_vm._s(scope.row[item.key] || scope.row[item.key] == "0" ? scope.row[item.key] : "--"))])])]) : _c('div', {
+            on: {
+              "click": function ($event) {
+                $event.stopPropagation();
+              }
+            }
+          }, [_vm._t("handle", null, {
+            "row": scope.row,
+            "index": scope.$index
+          })], 2)] : undefined;
         }
       }], null, true)
-    }, 'el-table-column', item, false));
+    }, 'el-table-column', item, false), _vm._l(item.children, function (cur, index) {
+      return _c('el-table-column', _vm._b({
+        key: index,
+        attrs: {
+          "align": _vm.tableGlobalConfig.align,
+          "label": cur.title,
+          "width": cur.width || 'auto',
+          "fixed": cur.fixed || false,
+          "sortable": cur.sortable || false,
+          "show-overflow-tooltip": cur.key !== 'handle',
+          "prop": cur.key
+        },
+        scopedSlots: _vm._u([{
+          key: "default",
+          fn: function (scope) {
+            return [cur.key !== 'handle' ? _c('div', [_vm.$scopedSlots[cur.key] ? _c('div', {
+              on: {
+                "click": _vm.slotClick
+              }
+            }, [_vm._t(cur.key, null, {
+              "row": scope.row,
+              "index": scope.$index
+            })], 2) : _c('p', [cur.isMoney ? _c('span', [_vm._v(_vm._s(_vm.forMatterMoney(scope.row[cur.key])))]) : _c('span', [_vm._v(_vm._s(scope.row[cur.key] || scope.row[cur.key] == "0" ? scope.row[cur.key] : "--"))])])]) : _c('div', {
+              on: {
+                "click": function ($event) {
+                  $event.stopPropagation();
+                }
+              }
+            }, [_vm._t("handle", null, {
+              "row": scope.row,
+              "index": scope.$index
+            })], 2)];
+          }
+        }], null, true)
+      }, 'el-table-column', cur, false));
+    }), 1);
   })], 2)], 1), _vm.tableGlobalConfig.showPagination ? _c('Pagination', {
     attrs: {
       "config": _vm.paginationData
@@ -36809,7 +36859,7 @@ var tablevue_type_template_id_e06940de_scoped_true_render = function render() {
     }
   }) : _vm._e()], 1);
 };
-var tablevue_type_template_id_e06940de_scoped_true_staticRenderFns = [];
+var tablevue_type_template_id_508efabe_scoped_true_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-40.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/pagination.vue?vue&type=template&id=593e52c7&scoped=true&
 var paginationvue_type_template_id_593e52c7_scoped_true_render = function render() {
@@ -37014,6 +37064,17 @@ var pagination_component = normalizeComponent(
     this.$bus.$off("clearTableTr");
   },
   methods: {
+    // 插槽点击
+    slotClick(e) {
+      if (e.target.tagName.toUpperCase() === "A") {
+        e.stopPropagation();
+      }
+    },
+    // 行点击
+    rowClick(row, column) {
+      const tableRef = this.$refs.tableComponentRef;
+      tableRef && tableRef.toggleRowSelection(row);
+    },
     // 初始defaultSelectable
     defaultSelectable(row, index) {
       return true;
@@ -37036,6 +37097,7 @@ var pagination_component = normalizeComponent(
         border: true,
         stripe: true,
         showIndex: true,
+        align: 'center',
         rowClassName: () => {
           return "custorm-row";
         },
@@ -37087,10 +37149,10 @@ var pagination_component = normalizeComponent(
 });
 ;// CONCATENATED MODULE: ./src/components/table.vue?vue&type=script&lang=js&
  /* harmony default export */ var components_tablevue_type_script_lang_js_ = (tablevue_type_script_lang_js_); 
-;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-32.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-32.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-32.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-32.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=style&index=0&id=e06940de&prod&scoped=true&lang=less&
+;// CONCATENATED MODULE: ./node_modules/mini-css-extract-plugin/dist/loader.js??clonedRuleSet-32.use[0]!./node_modules/css-loader/dist/cjs.js??clonedRuleSet-32.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/dist/cjs.js??clonedRuleSet-32.use[2]!./node_modules/less-loader/dist/cjs.js??clonedRuleSet-32.use[3]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/table.vue?vue&type=style&index=0&id=508efabe&prod&scoped=true&lang=less&
 // extracted by mini-css-extract-plugin
 
-;// CONCATENATED MODULE: ./src/components/table.vue?vue&type=style&index=0&id=e06940de&prod&scoped=true&lang=less&
+;// CONCATENATED MODULE: ./src/components/table.vue?vue&type=style&index=0&id=508efabe&prod&scoped=true&lang=less&
 
 ;// CONCATENATED MODULE: ./src/components/table.vue
 
@@ -37103,11 +37165,11 @@ var pagination_component = normalizeComponent(
 
 var table_component = normalizeComponent(
   components_tablevue_type_script_lang_js_,
-  tablevue_type_template_id_e06940de_scoped_true_render,
-  tablevue_type_template_id_e06940de_scoped_true_staticRenderFns,
+  tablevue_type_template_id_508efabe_scoped_true_render,
+  tablevue_type_template_id_508efabe_scoped_true_staticRenderFns,
   false,
   null,
-  "e06940de",
+  "508efabe",
   null
   
 )

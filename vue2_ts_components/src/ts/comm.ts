@@ -48,6 +48,8 @@ export interface ITableConfig {
      * @param { index }  当前下标
      */
     selectable?:  (row?: any,index?: number)=>  boolean;
+    // 对齐方式
+    align?: 'left' | 'right' | 'center'
 
 }
 

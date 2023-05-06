@@ -7,6 +7,7 @@
       <el-table
         ref="tableComponentRef"
         :data="tableData"
+        @row-click="rowClick"
         v-bind="tableAttributes"
         v-on="tableEvents"
         :border="tableGlobalConfig.border === true"
@@ -28,6 +29,7 @@
           :selectable="tableGlobalConfig.selectable || defaultSelectable"
           :reserve-selection="true"
           :fixed="tableGlobalConfig.selectionFixed || 'left'"
+          :align="tableGlobalConfig.align"
         />
         <el-table-column
           type="index"
@@ -35,9 +37,11 @@
           :index="tableGlobalConfig.indexMethod"
           v-if="tableGlobalConfig.showIndex"
           :width="tableGlobalConfig.indexWidth || 80"
+          :align="tableGlobalConfig.align"
         />
         <el-table-column
           v-for="(item, index) in getTableColumnConfig"
+          :align="tableGlobalConfig.align"
           v-bind="item"
           :label="item.title"
           :key="index"
@@ -45,13 +49,18 @@
           :fixed="item.fixed || false"
           :sortable="item.sortable || false"
           :show-overflow-tooltip="item.key !== 'handle'"
+          :prop="item.key"
+          
         >
-          <template #default="scope">
+          <template
+            v-if="!item.children || item.children.length === 0"
+            slot-scope="scope"
+          >
             <div v-if="item.key !== 'handle'">
-              <div v-if="$scopedSlots[item.key]">
+              <div v-if="$scopedSlots[item.key]" @click="slotClick">
                 <slot
                   :name="item.key"
-                  :data="scope.row"
+                  :row="scope.row"
                   :index="scope.$index"
                 ></slot>
               </div>
@@ -66,10 +75,53 @@
                 }}</span>
               </p>
             </div>
-            <div v-else>
+            <div v-else @click.stop>
               <slot name="handle" :row="scope.row" :index="scope.$index"></slot>
             </div>
           </template>
+          
+          <el-table-column
+            v-for="(cur, index) in item.children"
+            :align="tableGlobalConfig.align"
+            v-bind="cur"
+            :label="cur.title"
+            :key="index"
+            :width="cur.width || 'auto'"
+            :fixed="cur.fixed || false"
+            :sortable="cur.sortable || false"
+            :show-overflow-tooltip="cur.key !== 'handle'"
+            :prop="cur.key"
+            
+          >
+            <template slot-scope="scope">
+              <div v-if="cur.key !== 'handle'">
+                <div v-if="$scopedSlots[cur.key]" @click="slotClick">
+                  <slot
+                    :name="cur.key"
+                    :row="scope.row"
+                    :index="scope.$index"
+                  ></slot>
+                </div>
+                <p v-else>
+                  <span v-if="cur.isMoney">{{
+                    forMatterMoney(scope.row[cur.key])
+                  }}</span>
+                  <span v-else>{{
+                    scope.row[cur.key] || scope.row[cur.key] == "0"
+                      ? scope.row[cur.key]
+                      : "--"
+                  }}</span>
+                </p>
+              </div>
+              <div v-else @click.stop>
+                <slot
+                  name="handle"
+                  :row="scope.row"
+                  :index="scope.$index"
+                ></slot>
+              </div>
+            </template>
+          </el-table-column>
         </el-table-column>
       </el-table>
     </div>
@@ -94,19 +146,19 @@ export default {
   props: {
     tableData: {
       type: Array,
-      default: ()=>[],
+      default: () => [],
     },
     tableColumnConfig: {
       type: Array,
-      default: ()=>[],
+      default: () => [],
     },
     tableConfig: {
       type: Object,
-      default: ()=>({}),
+      default: () => ({}),
     },
     paginationData: {
       type: Object,
-      default: ()=>({}),
+      default: () => ({}),
     },
     loading: {
       type: Boolean,
@@ -114,11 +166,11 @@ export default {
     },
     tableAttributes: {
       type: Object,
-      default: ()=>({}),
+      default: () => ({}),
     },
     tableEvents: {
       type: Object,
-      default: ()=>({}),
+      default: () => ({}),
     },
   },
   data() {
@@ -147,6 +199,17 @@ export default {
     this.$bus.$off("clearTableTr");
   },
   methods: {
+    // 插槽点击
+    slotClick(e) {
+      if (e.target.tagName.toUpperCase() === "A") {
+        e.stopPropagation();
+      }
+    },
+    // 行点击
+    rowClick(row, column) {
+      const tableRef = this.$refs.tableComponentRef;
+      tableRef && tableRef.toggleRowSelection(row);
+    },
     // 初始defaultSelectable
     defaultSelectable(row, index) {
       return true;
@@ -167,6 +230,7 @@ export default {
         border: true,
         stripe: true,
         showIndex: true,
+        align: 'center',
         rowClassName: () => {
           return "custorm-row";
         },
@@ -234,6 +298,9 @@ export default {
     }
   }
   ::v-deep {
+    .el-table--enable-row-transition .el-table__body td.el-table__cell{
+      transition: none;
+    }
     table.el-table__body {
       width: 100% !important;
     }
@@ -245,21 +312,12 @@ export default {
       border-color: #ebeef5 !important;
     }
     .el-table {
-      // border:1px solid #EBEEF5;
       box-sizing: border-box;
       th {
         background-color: #f3f3f3;
-        text-align: center;
         color: #909399;
         font-weight: 600;
       }
-      td {
-        text-align: center;
-      }
-     /*  .el-table__fixed::before,
-      .el-table__fixed-right::before {
-        background-color: #ddd;
-      } */
       th,
       td {
         border-color: #ebeef5 !important;
