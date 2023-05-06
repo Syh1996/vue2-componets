@@ -9,6 +9,7 @@
     :remote-method="remoteMethod"
     :loading="loading"
     :disabled="disabled"
+    v-bind="$attrs"
     @change="selectChange"
     :placeholder="$t('placeInputInfo')"
     style="width: 100%"

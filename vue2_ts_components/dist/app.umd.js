@@ -36533,11 +36533,11 @@ var InputMoney_component = normalizeComponent(
 )
 
 /* harmony default export */ var InputMoney = (InputMoney_component.exports);
-;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/remoteMethodSelect.vue?vue&type=template&id=198e693b&
-var remoteMethodSelectvue_type_template_id_198e693b_render = function render() {
+;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/loaders/templateLoader.js??ruleSet[1].rules[4]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/remoteMethodSelect.vue?vue&type=template&id=e81bf588&
+var remoteMethodSelectvue_type_template_id_e81bf588_render = function render() {
   var _vm = this,
     _c = _vm._self._c;
-  return _c('Select', {
+  return _c('Select', _vm._b({
     staticStyle: {
       "width": "100%"
     },
@@ -36562,7 +36562,7 @@ var remoteMethodSelectvue_type_template_id_198e693b_render = function render() {
       },
       expression: "modelValue"
     }
-  }, _vm._l(_vm.options, function (item) {
+  }, 'Select', _vm.$attrs, false), _vm._l(_vm.options, function (item) {
     return _c('Option', {
       key: item.value,
       attrs: {
@@ -36572,7 +36572,7 @@ var remoteMethodSelectvue_type_template_id_198e693b_render = function render() {
     });
   }), 1);
 };
-var remoteMethodSelectvue_type_template_id_198e693b_staticRenderFns = [];
+var remoteMethodSelectvue_type_template_id_e81bf588_staticRenderFns = [];
 
 ;// CONCATENATED MODULE: ./node_modules/thread-loader/dist/cjs.js!./node_modules/babel-loader/lib/index.js??clonedRuleSet-85.use[1]!./node_modules/@vue/vue-loader-v15/lib/index.js??vue-loader-options!./src/components/remoteMethodSelect.vue?vue&type=script&lang=js&
 
@@ -36663,8 +36663,8 @@ var remoteMethodSelectvue_type_template_id_198e693b_staticRenderFns = [];
 ;
 var remoteMethodSelect_component = normalizeComponent(
   components_remoteMethodSelectvue_type_script_lang_js_,
-  remoteMethodSelectvue_type_template_id_198e693b_render,
-  remoteMethodSelectvue_type_template_id_198e693b_staticRenderFns,
+  remoteMethodSelectvue_type_template_id_e81bf588_render,
+  remoteMethodSelectvue_type_template_id_e81bf588_staticRenderFns,
   false,
   null,
   null,

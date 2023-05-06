@@ -4,9 +4,11 @@
 
 `vue2_ts_component` 基于vue2.x  完成搭建。
 
-使用建议为：项目为**vue2版本** ，支持**国际化** 
+使用建议为：项目为**vue2版本** ，支持**国际化** 。
 
-组件主要为系统管理产品提供较快封装组件。
+组件主要为系统管理产品提供较快封装组件，通过配置项免去手写页面。
+
+
 
 
 
@@ -128,10 +130,24 @@ import {
         <!-- 操作栏按钮slot  -->
         <template #handle="data">
             <el-button type="danger" @click="deleteItem(data)">删除</el-button>
-            <el-button type="danger" @click="edit(data)">编辑</el-button>
         </template>
         
   </TableComponent>
+  <script>
+  tableConfig = {
+      indexWidth: 120
+  };
+  tableColumnConfig = [
+    {
+       title: '标题',
+       key: 'title'
+    },
+     {
+       title: '日期',
+       key: 'date'
+    },
+  ];
+</script>
 ```
 
 ##### 预览
@@ -374,7 +390,7 @@ import {
 
 
 
-#### 远程搜索 
+#### 远程单选多选搜索 
 
 ##### 使用
 
@@ -403,6 +419,12 @@ import {
   })
 </script>
 ```
+
+| 参数                            | 说明 | 默认值                                      |
+| ------------------------------- | ---- | ------------------------------------------- |
+| 所有参数与elementui  select相同 |      | size=small,clearable= true,filterable= true |
+
+
 
 
 
@@ -499,8 +521,6 @@ new Vue({
 
 
 
-
-
 ### 其它问题
 
 ##### Q：两个及以上的搜索框依赖于同一个数据？ 
@@ -581,6 +601,8 @@ new Vue({
       return data;
   }
 ``````
+
+
 
 
 
